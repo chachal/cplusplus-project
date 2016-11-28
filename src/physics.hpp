@@ -1,8 +1,11 @@
+#include <SFML/System.hpp>
+
 class RigidbodySquare{
+  sf::Vector2f size, pos;
   public:
-    float width, height, posx, posy;
-  void init(float h, float w, float x, float y);
-  void gravity();
+    void init(sf::Vector2f s, sf::Vector2f p);
+    void gravity();
+    sf::Vector2f getcoords();
 };
 
 class RigidbodyCircle{
