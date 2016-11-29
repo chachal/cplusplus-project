@@ -34,7 +34,7 @@ void StateMachine::nextState(StateType& pNextState)
     }
     m_state = &pNextState;
     m_state_changed = true;
-    run();
+    run(StateMachine& sm);
 } // nextState
 
 void StateMachine::run()
@@ -57,6 +57,6 @@ void StateMachine::run()
 
 void State::run(StateMachine& sm)
 {
-
+    onEvent(sm);
 } // checkTimer
 
