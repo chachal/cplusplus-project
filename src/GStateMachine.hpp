@@ -4,7 +4,8 @@
 #include <string.h>
 
 
-class GStateMachine: public StateMachine{
+class GStateMachine: public StateMachine
+{
 
     public:
         template <class EVENT>
@@ -12,8 +13,8 @@ class GStateMachine: public StateMachine{
             BaseState* state = reinterpret_cast<BaseState*> (getState());
             state->onEvent(*this, event);
         }
+        GStateMachine();
 
-    private:
 // ==================================================================
 // Base class for all states
 // ==================================================================
@@ -30,20 +31,48 @@ class GStateMachine: public StateMachine{
 
     class Initial : public BaseState {
         public:
-            STATE_IMPLEMENT_NAME_METHOD(Initial);
+            virtual void onEnter();
             virtual void onEnter(StateMachine& sm);
             virtual void onExit(StateMachine& sm);
             virtual void onEvent(StateMachine& sm);
         }; // Initial
         friend class Initial;
 
+
+    class LoadingThrow : public BaseState{
+        public: 
+            STATE_IMPLEMENT_NAME_METHOD(LoadingThrow);
+            virtual void onEnter(StateMachine& sm);
+            virtual void onEvent(StateMachine& sm);
+            virtual void onExit(StateMachine& sm);
+
+    }; // LoadingThrow    
+        friend class LoadingThrow;
+
+
+    class Paused : public BaseState{
+        public: 
+            STATE_IMPLEMENT_NAME_METHOD(Paused);
+            virtual void onEnter(StateMachine& sm);
+            virtual void onEvent(StateMachine& sm);
+            virtual void onExit(StateMachine& sm);
+
+    }; // LoadingThrow
+        friend class Paused;
+
+    class Load : public BaseState{
+        public: 
+            STATE_IMPLEMENT_NAME_METHOD(Load);
+            virtual void onEnter(StateMachine& sm);
+            virtual void onExit(StateMachine& sm);
+
+    };
+    friend class Load;
 // ==================================================================
 // State objects
 // ==================================================================
 public:
-
 };
-
 
 
 

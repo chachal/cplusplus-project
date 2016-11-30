@@ -1,4 +1,5 @@
 #include <iostream>
+#include "StateMachine.hpp"
 #include "GStateMachine.hpp"
 #include <SFML/Window.hpp>
 #include "graphics.hpp"
@@ -37,4 +38,6 @@ int main()
     
   }
     event_loop();
+    return 0;
+
 }
