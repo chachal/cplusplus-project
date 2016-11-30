@@ -23,19 +23,18 @@ static void event_loop()
 int main()
 {
   cout<<"STARTING"<<endl;
-  sf::RenderWindow win(sf::VideoMode(1024, 1024), "Angry Birds");
+  sf::RenderWindow win(sf::VideoMode(800, 600), "Angry Birds");
   Bird a;
   a.init(sf::Vector2f(63.0f, 65.0f), sf::Vector2f(50.0f, 50.0f));
   sf::Clock kello;
 
-  while (win.isOpen()) {
-    //int delta = kello.getElapsedTime().asMilliseconds();
-    //if (delta > 1000/60) {
-      //kello.restart();
-      //a.updatepos();
-    //}
-    win.clear();
-    win.display();
+  while (1) {
+    int delta = kello.getElapsedTime().asMilliseconds();
+    if (delta > 1000/60) {
+      kello.restart();
+      a.updatepos();
+    }
+    
   }
     event_loop();
 }

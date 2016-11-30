@@ -12,8 +12,9 @@ void Bird::init(sf::Vector2f size, sf::Vector2f position){
 	rdbd.init(size, position);
 }
 
-void Bird::updatepos(){
+void Bird::updatepos(){ 
 	bird.setPosition(rdbd.updateposition());
+        std::cout << rdbd.getcoords().y << std::endl;
 }
 
 /*	Animation animation(&birdTexture, sf::Vector2u(10, 1), 0.1f);

@@ -6,6 +6,7 @@ class RigidbodySquare{
   public:
     void init(sf::Vector2f s, sf::Vector2f p);
     sf::Vector2f updateposition();
+    sf::Vector2f getcoords();
 };
 
 class RigidbodyCircle{

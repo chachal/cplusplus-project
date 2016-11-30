@@ -20,3 +20,8 @@ sf::Vector2f RigidbodySquare::updateposition(){
   pos = pos + vel;
   return pos;
 }
+
+sf::Vector2f RigidbodySquare::getcoords(){
+  return pos;
+}
+
