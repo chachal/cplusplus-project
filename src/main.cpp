@@ -28,9 +28,12 @@ int main()
   Bird a;
   a.init(sf::Vector2f(63.0f, 65.0f), sf::Vector2f(50.0f, 50.0f));
   sf::Clock kello;
+  sf::Clock kello2;
 
   while (1) {
+    float d = kello2.restart().asSeconds();
     int delta = kello.getElapsedTime().asMilliseconds();
+    a.updateanim(d);
     if (delta > 1000/60) {
       kello.restart();
       a.updatepos();

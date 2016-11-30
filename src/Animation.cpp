@@ -1,8 +1,6 @@
-#include "Animation.h"
+#include "Animation.hpp"
 
-
-
-Animation::Animation(sf::Texture* texture, sf::Vector2u frames, float rate)
+void Animation::init(sf::Texture* texture, sf::Vector2u frames, float rate)
 {
 	m_frames = frames;
 	switchT = rate;

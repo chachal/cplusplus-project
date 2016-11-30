@@ -1,4 +1,5 @@
 #include "physics.hpp"
+#include "Animation.hpp"
 #include <SFML/Graphics.hpp>
 
 class Bird{
@@ -8,4 +9,6 @@ class Bird{
 		sf::RectangleShape bird;
 		void init(sf::Vector2f size, sf::Vector2f position);
 		void updatepos();
+		void updateanim(float delta);
+		Animation anim;
 };

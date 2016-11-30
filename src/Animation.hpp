@@ -4,7 +4,7 @@
 class Animation
 {
 public:
-	Animation(sf::Texture* texture, sf::Vector2u frames, float rate);
+	void init(sf::Texture* texture, sf::Vector2u frames, float rate);
 	~Animation();
 	void Update(float delta, int row);
 public:
