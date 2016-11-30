@@ -8,7 +8,7 @@ int main() {
   std::vector<RigidbodySquare> squares;
   RigidbodySquare rect;
   sf::Vector2f v1(5,5);
-  sf::Vector2f v2(0,1000);
+  sf::Vector2f v2(0,0);
   rect.init(v1, v2);  
   squares.push_back(rect);
   sf::Clock kello;
@@ -20,8 +20,8 @@ int main() {
       for(int i = 0; i < squares.size(); i++)
       { 
         RigidbodySquare& r = squares[i];
-        r.gravity();      
-        std::cout << r.getcoords().y << std::endl;
+        r.updateposition();      
+        std::cout << r.getcoords().y << "      " << r.getcoords().x << std::endl;
       }
     }
   }

@@ -1,10 +1,12 @@
-#include "physics.hpp"
 #include <utility>
 #include <iostream>
+#include "graphics.hpp"
 
 void RigidbodySquare::init(sf::Vector2f s, sf::Vector2f p){
   size = s;
   pos = p;
+  vel.x = 5;
+  vel.y = 5;
 }
 
 void RigidbodyCircle::init(float r, float x, float y){
@@ -13,10 +15,8 @@ void RigidbodyCircle::init(float r, float x, float y){
   posy = y;
 }
 
-void RigidbodySquare::gravity(){
-  pos.y = pos.y - 1;
-}
-
-sf::Vector2f RigidbodySquare::getcoords(){
+sf::Vector2f RigidbodySquare::updateposition(){
+  vel.y = vel.y - 0.1;		//gravity
+  pos = pos + vel;
   return pos;
 }

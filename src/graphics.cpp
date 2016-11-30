@@ -1,18 +1,22 @@
-#include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Animation.h"
+#include "graphics.hpp"
 
-int main()
-{
-  sf::RectangleShape bird(sf::Vector2f(63.0f, 65.0f));
+void Bird::init(sf::Vector2f size, sf::Vector2f position){
+	bird.setSize(size);
 	bird.setFillColor(sf::Color::White);
 	bird.setOrigin(31.5f, 32.5f);
-	bird.setPosition(50.0f, 50.0f);
-	sf::Texture birdTexture;
+	bird.setPosition(position);
 	birdTexture.loadFromFile("birds.png");
 	bird.setTexture(&birdTexture);
+	rdbd.init(size, position);
+}
 
-	Animation animation(&birdTexture, sf::Vector2u(10, 1), 0.1f);
+void Bird::updatepos(){
+	bird.setPosition(rdbd.updateposition());
+}
+
+/*	Animation animation(&birdTexture, sf::Vector2u(10, 1), 0.1f);
 
 	float delta = 0.0f;
 	sf::Clock kello;
@@ -43,4 +47,4 @@ int main()
 		win.display();
 	}
 	return 0;
-}
+}*/
