@@ -34,6 +34,10 @@ int main()
     if (delta > 1000/60) {
       kello.restart();
       a.updatepos();
+      win.clear();
+      win.draw(a.bird);
+      win.display();
+
     }
     
   }

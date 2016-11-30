@@ -43,9 +43,6 @@ void Bird::updatepos(){
 
 		animation.Update(delta, 0);
 		bird.setTextureRect(animation.uvRect);
-		win.clear(sf::Color::White);
-		win.draw(bird);
-		win.display();
-	}
+			}
 	return 0;
 }*/

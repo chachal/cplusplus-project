@@ -6,7 +6,7 @@ void RigidbodySquare::init(sf::Vector2f s, sf::Vector2f p){
   size = s;
   pos = p;
   vel.x = 5;
-  vel.y = 5;
+  vel.y = 10;
 }
 
 void RigidbodyCircle::init(float r, float x, float y){
@@ -16,7 +16,10 @@ void RigidbodyCircle::init(float r, float x, float y){
 }
 
 sf::Vector2f RigidbodySquare::updateposition(){
-  vel.y = vel.y - 0.1;		//gravity
+  if(pos.y == 600){
+	vel.y = -20;
+  }
+  vel.y = vel.y + 0.0001;		//gravity
   pos = pos + vel;
   return pos;
 }

@@ -2,10 +2,10 @@
 #include <SFML/Graphics.hpp>
 
 class Bird{
-		sf::RectangleShape bird;
-		sf::Texture birdTexture;
 		RigidbodySquare rdbd;
-	public:
+	public:		
+		sf::Texture birdTexture;		
+		sf::RectangleShape bird;
 		void init(sf::Vector2f size, sf::Vector2f position);
 		void updatepos();
 };
