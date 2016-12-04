@@ -24,9 +24,9 @@ static void event_loop()
 int main()
 {
   cout<<"STARTING"<<endl;
-  sf::RenderWindow win(sf::VideoMode(800, 600), "Angry Birds");
+  sf::RenderWindow win(sf::VideoMode(960, 540), "Angry Birds");
   Bird a;
-  a.init(sf::Vector2f(63.0f, 65.0f), sf::Vector2f(50.0f, 50.0f));
+  a.init(sf::Vector2f(63.0f, 65.0f), sf::Vector2f(0.0f, 0.0f));
   sf::Clock kello;
   sf::Clock kello2;
 
