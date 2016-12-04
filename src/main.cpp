@@ -30,8 +30,19 @@ int main()
   sf::Clock kello;
   sf::Clock kello2;
 
-  while (1) {
+  while (win.isOpen()) {
     float d = kello2.restart().asSeconds();
+    sf::Event evnt;
+		while (win.pollEvent(evnt)) {
+			switch (evnt.type) {
+			case sf::Event::Closed:
+				win.close();
+				break;
+			case sf::Event::Resized:
+				printf("Uusi leveys: %i Uusi korkeus: %i\n", evnt.size.width, evnt.size.height);
+				break;
+			}
+		}
     int delta = kello.getElapsedTime().asMilliseconds();
     a.updateanim(d);
     if (delta > 1000/60) {
