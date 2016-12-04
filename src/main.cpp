@@ -38,16 +38,16 @@ int main()
   int32 velocityIterations = 8;
   int32 positionIterations = 3;
 
-  RectBody a;
-  a.init(world);
+  //RectBody a;
+  //a.init(world);
 
-  for (int32 i = 0; i < 120; ++i)
-  {
+  
+  while (win.isOpen()) {
+   
     world.Step(timeStep, velocityIterations, positionIterations);
 
-    cout << "asd" << endl;
-  }
-  while (win.isOpen()) {
+    //std::cout << a.getposition().x << std::endl;
+  
     sf::Event evnt;
     while (win.pollEvent(evnt)) {
       switch (evnt.type) {

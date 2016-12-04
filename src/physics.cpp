@@ -19,6 +19,7 @@ void RectBody::init(b2World world){
   fixtureDef.friction = 0.3f;
 
   body->CreateFixture(&fixtureDef);
+
 }
 
 b2Vec2 RectBody::getposition(){
