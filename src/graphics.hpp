@@ -7,7 +7,7 @@ class Bird{
 		sf::Texture birdTexture;		
 		sf::RectangleShape bird;
 		void init(sf::Vector2f size, sf::Vector2f position);
-		void updatepos();
+		void updatepos(sf::Vector2f pos);
 		void updateanim(float delta);
 		Animation anim;
 };

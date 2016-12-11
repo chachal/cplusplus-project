@@ -5,7 +5,7 @@
 void RectBody::init(b2World* world){
   b2BodyDef bodyDef;
   bodyDef.type = b2_dynamicBody;
-  bodyDef.position.Set(0.0f, 15.0f);
+  bodyDef.position.Set(0.0f, 10.0f);
   body = world->CreateBody(&bodyDef);
 
   b2PolygonShape dynamicBox;
@@ -17,7 +17,6 @@ void RectBody::init(b2World* world){
   fixtureDef.friction = 0.3f;
 
   body->CreateFixture(&fixtureDef);
-
 }
 
 b2Vec2 RectBody::getposition(){
