@@ -25,37 +25,43 @@ int main()
 {
   cout<<"STARTING"<<endl;
   sf::RenderWindow win(sf::VideoMode(960, 540), "Angry Birds");
-  Bird a;
-  a.init(sf::Vector2f(63.0f, 65.0f), sf::Vector2f(50.0f, 50.0f));
-  sf::Clock kello;
-  sf::Clock kello2;
 
+  b2Vec2 gravity(0.0f, -10.0f);
+  b2World world(gravity);
+  b2BodyDef groundBodyDef;
+  groundBodyDef.position.Set(0.0f, -10.0f);
+  b2Body* groundBody = world.CreateBody(&groundBodyDef);
+  b2PolygonShape groundBox;
+  groundBox.SetAsBox(50.0f, 10.0f);
+  groundBody->CreateFixture(&groundBox, 0.0f);
+  float32 timeStep = 1.0f/1.0f;
+  int32 velocityIterations = 8;	
+  int32 positionIterations = 3;
+
+  RectBody a;
+  a.init(&world);
+
+  
   while (win.isOpen()) {
-    float d = kello2.restart().asSeconds();
+   
+    world.Step(timeStep, velocityIterations, positionIterations);
+  
     sf::Event evnt;
-		while (win.pollEvent(evnt)) {
-			switch (evnt.type) {
-			case sf::Event::Closed:
-				win.close();
-				break;
-			case sf::Event::Resized:
-				printf("Uusi leveys: %i Uusi korkeus: %i\n", evnt.size.width, evnt.size.height);
-				break;
-			}
-		}
-    int delta = kello.getElapsedTime().asMilliseconds();
-    a.updateanim(d);
-    if (delta > 1000/60) {
-      kello.restart();
-      a.updatepos();
-      win.clear();
-      win.draw(a.bird);
-      win.display();
-
+    while (win.pollEvent(evnt)) {
+      switch (evnt.type) {
+        case sf::Event::Closed:
+          win.close();
+          break;
+        case sf::Event::Resized:
+          printf("Uusi leveys: %i Uusi korkeus: %i\n", evnt.size.width, evnt.size.height); 
+          break;
+      }
     }
-    
-  }
-    event_loop();
-    return 0;
 
+
+    win.clear();
+    win.display();
+  }
+  event_loop();
+  return 0;
 }

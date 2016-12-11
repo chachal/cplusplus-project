@@ -1,16 +1,14 @@
 #include <SFML/System.hpp>
+#include "Box2D-master/Box2D/Box2D/Box2D.h"
 
-class RigidbodySquare{
-  sf::Vector2f size, pos, vel;
-  
+class RectBody{
+  b2BodyDef bodyDef;
+  b2PolygonShape dynamicBox;
+  b2FixtureDef fixtureDef;
   public:
-    void init(sf::Vector2f s, sf::Vector2f p);
-    sf::Vector2f updateposition();
-    sf::Vector2f getcoords();
+    void init(b2World* world);
+    b2Vec2 getposition();
+    b2Body* body;
 };
 
-class RigidbodyCircle{
-  public:
-    float radius, posx, posy;
-    void init(float r, float x, float y);
-};
+

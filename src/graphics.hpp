@@ -3,7 +3,6 @@
 #include <SFML/Graphics.hpp>
 
 class Bird{
-		RigidbodySquare rdbd;
 	public:		
 		sf::Texture birdTexture;		
 		sf::RectangleShape bird;

@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++11     -o Testbed -rdynamic ../Box2D/libBox2D.a ../glew/libglew.a ../glfw/libglfw.a -lGLU -lGL 
