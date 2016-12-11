@@ -34,19 +34,17 @@ int main()
   b2PolygonShape groundBox;
   groundBox.SetAsBox(50.0f, 10.0f);
   groundBody->CreateFixture(&groundBox, 0.0f);
-  float32 timeStep = 1.0f/60.0f;
-  int32 velocityIterations = 8;
+  float32 timeStep = 1.0f/1.0f;
+  int32 velocityIterations = 8;	
   int32 positionIterations = 3;
 
-  //RectBody a;
-  //a.init(world);
+  RectBody a;
+  a.init(&world);
 
   
   while (win.isOpen()) {
    
     world.Step(timeStep, velocityIterations, positionIterations);
-
-    //std::cout << a.getposition().x << std::endl;
   
     sf::Event evnt;
     while (win.pollEvent(evnt)) {

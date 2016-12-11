@@ -1,5 +1,6 @@
 #!/bin/bash
 
+sudo apt-get install g++ cmake libglu-dev libxi-dev
 cd ..
 wget https://github.com/erincatto/Box2D/archive/master.zip
 unzip master.zip
