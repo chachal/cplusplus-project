@@ -2,10 +2,10 @@
 #include <iostream>
 #include "graphics.hpp"
 
-void RectBody::init(b2World* world){
+void RectBody::init(b2World* world, b2Vec2 pos){
   b2BodyDef bodyDef;
   bodyDef.type = b2_dynamicBody;
-  bodyDef.position.Set(0.0f, 10.0f);
+  bodyDef.position.Set(pos.x, pos.y);
   body = world->CreateBody(&bodyDef);
 
   b2PolygonShape dynamicBox;
