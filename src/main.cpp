@@ -38,7 +38,7 @@ int main()
   cout<<"STARTING"<<endl;
   sf::RenderWindow win(sf::VideoMode(960, 540), "Angry Birds");
 
-  b2Vec2 gravity(0.0f, 0.098f);
+  b2Vec2 gravity(0.0f, 9.8f);
   b2World world(gravity);
   b2BodyDef groundBodyDef;
   groundBodyDef.position.Set(0.0f, 16.6f);
@@ -46,7 +46,7 @@ int main()
   b2PolygonShape groundBox;
   groundBox.SetAsBox(50.0f, 1.0f);
   groundBody->CreateFixture(&groundBox, 0.0f);
-  float32 timeStep = 1.f/60.f;
+  float32 timeStep = 1.f/6000.f;
   int32 velocityIterations = 8;	
   int32 positionIterations = 3;
   
