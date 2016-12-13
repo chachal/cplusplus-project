@@ -1,25 +1,43 @@
 #include <iostream>
 #include "graphics.h"
 
-void Bird::init(sf::Vector2f size, sf::Vector2f position) {
+void Bird::init(sf::Vector2f size, sf::Vector2f position, int type) {
 	bird.setSize(size);
 	bird.setFillColor(sf::Color::White);
-	bird.setOrigin(31.5f, 32.5f);
+	bird.setOrigin((size.x/2), (size.y/2));
 	bird.setPosition(position);
 	birdTexture.loadFromFile("birds.png");
 	bird.setTexture(&birdTexture);
-	rdbd.init(size, position);
-	animation.init(&birdTexture, sf::Vector2u(10, 1), 0.1f);
+	anim.init(&birdTexture, sf::Vector2u(10, 1), 0.1f);
 }
 
 void Bird::updatepos() {
-	bird.setPosition(rdbd.updateposition());
-	std::cout << rdbd.getcoords().y << std::endl;
+	std::cout << "a" << std::endl;
+
 }
+
 void Bird::updateanim(float delta) {
-	animation.Update(delta, 0);
-	bird.setTextureRect(animation.uvRect);
+	anim.Update(delta, 0);
+	bird.setTextureRect(anim.uvRect);
+
 }
+
+void Block::init(sf::Vector2f position, int type, float angle) {
+	block.setSize(sf::Vector2f(25.0f, 25.0f));
+	block.setFillColor(sf::Color::Black);
+	block.setPosition(position);
+	blockTexture.loadFromFile("blocks.png");
+	block.setTexture(&blockTexture);
+}
+
+void Pig::init(sf::Vector2f position, int type) {
+	pig.setSize(sf::Vector2f(25.0f, 25.0f));
+	pig.setFillColor(sf::Color::Red);
+	pig.setPosition(position);
+	pigTexture.loadFromFile("pigs.png");
+	pig.setTexture(&pigTexture);
+}
+
 /*	Animation animation(&birdTexture, sf::Vector2u(10, 1), 0.1f);
 
 float delta = 0.0f;
