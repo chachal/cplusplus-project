@@ -8,11 +8,11 @@ void Bird::init(sf::Vector2f size, sf::Vector2f position){
 	bird.setPosition(position);
 	birdTexture.loadFromFile("birds.png");
 	bird.setTexture(&birdTexture);
-	anim.init(&birdTexture, sf::Vector2u(10, 1), 0.1f);  
+	anim.init(&birdTexture, sf::Vector2u(10, 1), 0.1f);      
 }
 
-void Bird::updatepos(){ 
-        std::cout << "a" << std::endl;
+void Bird::updatepos(sf::Vector2f pos){
+        bird.setPosition(pos);
 	
 }
 

@@ -6,9 +6,18 @@ class RectBody{
   b2PolygonShape dynamicBox;
   b2FixtureDef fixtureDef;
   public:
-    void init(b2World* world);
+    void init(b2World* world, b2Vec2 pos);
     b2Vec2 getposition();
     b2Body* body;
 };
 
+class CircleBody{
+  b2BodyDef bodyDef;
+  b2PolygonShape circleShape;
+  b2FixtureDef fixtureDef;
+  public:
+    void init(b2World* world);
+    b2Vec2 getposition();
+    b2Body* body;
+};
 
