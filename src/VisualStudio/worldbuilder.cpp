@@ -1,7 +1,8 @@
 #include "worldbuilder.h"
 
-worldbuilder::worldbuilder(std::vector<std::vector<std::vector<float> > > levelData)
+Worldbuilder::Worldbuilder(string levelNumber)
 {
+	std::vector<std::vector<std::vector<float> > > levelData = levelReader(levelNumber);
 	auto it = levelData.begin();
 	for (auto birds = it->begin(); birds != it->end(); birds++) {
 		auto bird = birds->begin();
@@ -17,8 +18,6 @@ worldbuilder::worldbuilder(std::vector<std::vector<std::vector<float> > > levelD
 	it++;
 	for (auto blocks = it->begin(); blocks != it->end(); blocks++) {
 		auto block = blocks->begin();
-		int quant = *block;
-		block++;
 		int type = *block;
 		block++;
 		float angle = *block;
@@ -26,32 +25,36 @@ worldbuilder::worldbuilder(std::vector<std::vector<std::vector<float> > > levelD
 		float x = *block;
 		block++;
 		float y = *block;
-		for (int i = 0; i < quant; i++) {
-			Block b;
-			b.init(sf::Vector2f(x, y), type, angle);
-			m_blocks.push_back(b);
-		}
+		Block b;
+		b.init(sf::Vector2f(x, y), type, angle);
+		m_blocks.push_back(b);
 	}
 	it++;
 	for (auto pigs = it->begin(); pigs != it->end(); pigs++) {
 		auto pig = pigs->begin();
-		int quant = *pig;
-		pig++;
 		int type = *pig;
 		pig++;
 		float x = *pig;
 		pig++;
 		float y = *pig;
-		for (int i = 0; i < quant; i++) {
-			Pig b;
-			b.init(sf::Vector2f(x, y), type);
-			m_pigs.push_back(b);
-		}
+		Pig b;
+		b.init(sf::Vector2f(x, y), type);
+		m_pigs.push_back(b);
 	}
 }
 
 
-worldbuilder::~worldbuilder()
+Worldbuilder::~Worldbuilder()
 {
 
+}
+
+void Worldbuilder::Draw(sf::RenderWindow &win)
+{
+	for (auto it = m_blocks.begin(); it != m_blocks.end(); it++) {
+		win.draw((*it).block);
+	}
+	for (auto it = m_pigs.begin(); it != m_pigs.end(); it++) {
+		win.draw((*it).pig);
+	}
 }

@@ -3,12 +3,14 @@
 #include <vector>
 #include <list>
 #include "graphics.h"
+#include "levelreader.h"
 
-class worldbuilder
+class Worldbuilder
 {
 public:
-	worldbuilder(std::vector<std::vector<std::vector<float> > > levelData);
-	~worldbuilder();
+	Worldbuilder(string levelNumber);
+	~Worldbuilder();
+	void Draw(sf::RenderWindow &win);
 private:
 	std::vector<Bird> m_birds;
 	std::vector<Block> m_blocks;

@@ -1,29 +1,48 @@
-#include <SFML/Graphics.hpp>
 #include <iostream>
-#include "graphics.h"
+#include <SFML/Window.hpp>
+#include "worldbuilder.h"
+
+using namespace std;
+
+static void event_loop()
+{
+	int mode = 0;
+	//mode 1 == peliss‰, t‰h‰n voi lis‰ill‰ modeja menuun mit‰ haluaa
+	//mainin piirto
+	//keylistenerit / mouse listener mill‰ vaihdetaan tota modea sfml avulla ett‰ p‰‰see peliin
+	// jos modeja tulee enemm‰n niin vaihtaa ton if silmukan switchiksi, jne.
+	if (mode != 0) {
+
+
+	}
+
+
+}
 
 int main()
 {
-	sf::RenderWindow win(sf::VideoMode(1024, 1024), "Angry Birds", sf::Style::Default);
-	
-	Bird birdie;
-	birdie.init(sf::Vector2f(63.0f, 65.0f), sf::Vector2f(50.0f, 50.0f));
-	//sf::RectangleShape bird(sf::Vector2f(63.0f, 65.0f));
-	//bird.setFillColor(sf::Color::White);
-	//bird.setOrigin(31.5f, 32.5f);
-	//bird.setPosition(50.0f, 50.0f);
-	//sf::Texture birdTexture;
-	//birdTexture.loadFromFile("birds.png");
-	//bird.setTexture(&birdTexture);
+	cout << "STARTING" << endl;
+	sf::RenderWindow win(sf::VideoMode(960, 540), "Angry Birds");
+	b2Vec2 gravity(0.0f, -10.0f);
+	b2World world(gravity);
+	b2BodyDef groundBodyDef;
+	groundBodyDef.position.Set(0.0f, -10.0f);
+	b2Body* groundBody = world.CreateBody(&groundBodyDef);
+	b2PolygonShape groundBox;
+	groundBox.SetAsBox(50.0f, 10.0f);
+	groundBody->CreateFixture(&groundBox, 0.0f);
+	float32 timeStep = 1.0f / 1.0f;
+	int32 velocityIterations = 8;
+	int32 positionIterations = 3;
 
-	//Animation animation(&(birdie.birdTexture), sf::Vector2u(10, 1), 0.1f);
-
-	float delta = 0.0f;
-	sf::Clock kello;
+	RectBody a;
+	a.init(&world);
+	Worldbuilder wrld("1");
 
 	while (win.isOpen()) {
-		delta = kello.restart().asSeconds();
-		
+
+		world.Step(timeStep, velocityIterations, positionIterations);
+
 		sf::Event evnt;
 		while (win.pollEvent(evnt)) {
 			switch (evnt.type) {
@@ -35,15 +54,11 @@ int main()
 				break;
 			}
 		}
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-			sf::Vector2i mousepos = sf::Mouse::getPosition(win);
-			(birdie.bird).setPosition(static_cast<float>(mousepos.x), static_cast<float>(mousepos.y));
-		}
-		birdie.updatepos();
-		birdie.updateanim(delta);
-		win.clear(sf::Color::White);
-		win.draw(birdie.bird);
+
+		wrld.Draw(win);
+		win.clear();
 		win.display();
 	}
+	event_loop();
 	return 0;
 }
