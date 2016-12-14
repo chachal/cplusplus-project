@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <sstream>
 #include <cstring>
 #include <stdlib.h>
 using namespace std;
@@ -10,39 +11,40 @@ vector<vector<vector<float> > > levelReader(string levelNumber) {
   string levelFile = levelNumber + ".csv";
   vector<vector<float> > birds, blocks, pigs;
   vector<vector<vector<float> > > levelData;
-  string line;
+  string line, data;
   float tmp;
   ifstream level;
   level.open(levelFile.c_str());
   if (level.is_open()) {
-    cout << "Success" << endl;
     while (!level.eof()) {
-      getline(level, line, ',');
-      if (line == "bird") {
+      getline(level, line);
+      stringstream sline(line);
+      getline(sline, data, ',');
+      if (data == "bird") {
         vector<float> onebird;
         for (int i = 0; i < 2; i++) {
-          getline(level, line, ',');
-          tmp = atof(line.c_str());
+          getline(sline, data, ',');
+          tmp = atof(data.c_str());
           onebird.push_back(tmp);
         }
         birds.push_back(onebird);
         onebird.clear();
       }
-      else if (line == "block") {
+      else if (data == "block") {
         vector<float> oneblock;
-        for (int i = 0; i < 4; i++) {
-          getline(level, line, ',');
-          tmp = atof(line.c_str());
+        for (int i = 0; i < 3; i++) {
+          getline(sline, data, ',');
+          tmp = atof(data.c_str());
           oneblock.push_back(tmp);
         }
         blocks.push_back(oneblock);
         oneblock.clear();
       }
-      else if (line == "pig") {
+      else if (data == "pig") {
         vector<float> onepig;
-        for (int i = 0; i < 3; i++) {
-          getline(level, line, ',');
-          tmp = atof(line.c_str());
+        for (int i = 0; i < 2; i++) {
+          getline(sline, data, ',');
+          tmp = atof(data.c_str());
           onepig.push_back(tmp);
         }
         pigs.push_back(onepig);
@@ -60,7 +62,6 @@ vector<vector<vector<float> > > levelReader(string levelNumber) {
     zer.push_back(z);
     zero.push_back(zer);
     levelData.push_back(zero);
-    cout << "Failed" << endl;
   }
   level.close();
   return levelData;
