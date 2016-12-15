@@ -45,10 +45,17 @@ void game()
   
   std::vector<std::pair<RectBody, Bird> > birds;
   std::vector<std::pair<CircleBody, Bird2> > birds2;
+
+  bool canlaunch = true;
+  sf::Vector2i mousepos;
+  sf::Vector2i startpos(190, 370);
+  sf::Vector2i impact;
+
+  bool physics = false;
   
   
-  createSquares(&birds, &world, b2Vec2(20.0f, 0.f));
-  createCircles(&birds2, &world, b2Vec2(20.4f, -1.f));
+  //createSquares(&birds, &world, b2Vec2(20.0f, 0.f));
+  createCircles(&birds2, &world, b2Vec2(startpos.x/SCALE, startpos.y/SCALE));
   size_t len = birds.size();
   sf::Clock kello2;
 
@@ -81,6 +88,20 @@ void game()
 
       win.draw(birds2[i].second.bird);
     }
+    
+    mousepos = sf::Mouse::getPosition(win);
+    impact = startpos - mousepos;
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Left) &&canlaunch){
+      if(impact.x > 50){
+        impact.x = 50;
+      }
+      if(impact.y > 50){
+        impact.y = 50;
+      }
+      physics = true;
+      birds2.back().first.body->ApplyLinearImpulse(b2Vec2(impact.x,impact.y/3), birds2.back().first.body->GetWorldCenter(), true);
+      canlaunch = false;
+    }
     sf::Event evnt;
     while (win.pollEvent(evnt)) {
       switch (evnt.type) {
@@ -90,10 +111,12 @@ void game()
         case sf::Event::Resized:
           printf("Uusi leveys: %i Uusi korkeus: %i\n", evnt.size.width, evnt.size.height); 
           break;
-        case sf::Event:::
+
       }
     }
-    world.Step(timeStep, velocityIterations, positionIterations);
+    if(physics){
+      world.Step(timeStep, velocityIterations, positionIterations);
+    }
     win.display();
   }
 }
