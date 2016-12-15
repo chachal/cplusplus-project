@@ -25,7 +25,12 @@ void game()
   const float SCALE = 30.f;
   cout<<"STARTING"<<endl;
   sf::RenderWindow win(sf::VideoMode(960, 540), "Angry Birds");
-
+  sf::Sprite background;
+  sf::Texture backgroundTex;
+  backgroundTex.loadFromFile("Sprites/bg.png");
+  background.setTexture(backgroundTex);
+  background.setPosition(0,-205);
+  
   b2Vec2 gravity(0.0f, 9.8f);
   b2World world(gravity);
   b2BodyDef groundBodyDef;
@@ -34,11 +39,7 @@ void game()
   b2PolygonShape groundBox;
   groundBox.SetAsBox(50.0f, 1.0f);
   groundBody->CreateFixture(&groundBox, 0.0f);
-  sf::Sprite GroundSprite;
-  sf::Texture GroundTexture;
-  GroundTexture.loadFromFile("Sprites/red.png");
-  GroundSprite.setTexture(&GroundTexture);
-  float32 timeStep = 1.f/6000.f;
+  float32 timeStep = 1.f/3000.f;
   int32 velocityIterations = 8;	
   int32 positionIterations = 3;
   
@@ -55,6 +56,7 @@ void game()
     
 
     win.clear();
+    win.draw(background);
     size_t len = birds.size();
     float d = kello2.restart().asSeconds();
 

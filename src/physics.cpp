@@ -9,7 +9,7 @@ void RectBody::init(b2World* world, b2Vec2 pos){
   body = world->CreateBody(&bodyDef);
 
   b2PolygonShape dynamicBox;
-  dynamicBox.SetAsBox(1.0f, 1.0f);
+  dynamicBox.SetAsBox(1.0f, 0.85f);
 
   b2FixtureDef fixtureDef;
   fixtureDef.shape = &dynamicBox;
@@ -32,7 +32,7 @@ void CircleBody::init(b2World* world, b2Vec2 pos){
 
   b2CircleShape circleShape;
   circleShape.m_p.Set(0.0f, 0.0f);
-  circleShape.m_radius = 0.8f;
+  circleShape.m_radius = 1.f;
   
   b2FixtureDef fixtureDef;
   fixtureDef.shape = &circleShape;
