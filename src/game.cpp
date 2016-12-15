@@ -70,6 +70,8 @@ void game(sf::Sprite* background, sf::RenderWindow* win)
   size_t len = blocks.size();
   sf::Clock kello2;
 
+  
+
   while (win->isOpen()) {
     win->clear();
     win->draw(*background);
