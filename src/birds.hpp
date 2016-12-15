@@ -3,18 +3,21 @@
 #include <SFML/Graphics.hpp>
 
 class Bird{
-  public:		    
-    void init(float type);
-    void updatepos(sf::Vector2f pos);
-    sf::Shape bird;
+	public:		
+		sf::Texture birdTexture;		
+		sf::RectangleShape bird;
+		void init();
+		void updatepos(sf::Vector2f pos);
+		void updateanim(float delta);
+		Animation anim;
 };
 
-class Red: public Bird{
-  public:
-    sf::Texture birdTexture;			
-    void init();
-    void updateanim(float delta);
-    Animation anim;
-    float mass;
-    sf::Vector2f size;
+class Bird2{
+	public:		
+		sf::Texture birdTexture;		
+		sf::CircleShape bird;
+		void init();
+		void updatepos(sf::Vector2f pos);
+		void updateanim(float delta);
+		Animation anim;
 };
