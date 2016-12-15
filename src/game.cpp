@@ -2,24 +2,7 @@
 
 using namespace std;
 
-<<<<<<< HEAD
-=======
-void createSquares(std::vector<std::pair<RectBody, Bird> >* birds, b2World* world, b2Vec2 pos)
-{
-  RectBody a;
-  Bird b;
-  a.init(world, pos);    
-  b.init();
-  birds->push_back(std::make_pair(a,b));
-}
-void createCircles(std::vector<std::pair<CircleBody, Bird2> >* birds, b2World* world, b2Vec2 pos)
-{
-  CircleBody a;
-  Bird2 b;
-  a.init(world, pos);    
-  b.init();
-  birds->push_back(std::make_pair(a,b));
-}
+
 
 void checkimpact(sf::Vector2i* impact){
   if(impact->x > 50){
@@ -36,7 +19,6 @@ void checkimpact(sf::Vector2i* impact){
   }
 }
 
->>>>>>> master
 void game()
 {
   string levelnmb = "1";
@@ -68,20 +50,20 @@ void game()
   int32 positionIterations = 3;
   
   std::vector<std::pair<RectBody, Bird> > birds;
-<<<<<<< HEAD
-  std::vector<std::pair<CircleBody, Pig> > birds2;
+  std::vector<std::pair<CircleBody, Bird2> > birds2;
+  std::vector<std::pair<CircleBody, Pig> > pigs;
   
-  Worldbuilder(levelnmb, &world, &birds, &birds2);
+  Worldbuilder(levelnmb, &world, &birds, &pigs, &birds2);
   for (auto jt = birds.begin(); jt != birds.end(); jt++) {
     jt->second.init();
-    win.draw(jt->second.bird);
   }
   for (auto kt = birds2.begin(); kt != birds2.end(); kt++) {
     kt->second.init();
-    win.draw(kt->second.bird);
   }
-=======
-  std::vector<std::pair<CircleBody, Bird2> > birds2;
+  for (auto kt = pigs.begin(); kt != pigs.end(); kt++) {
+    kt->second.init();
+  }
+
 
   bool canlaunch = false;
   sf::Vector2i mousepos;
@@ -95,13 +77,6 @@ void game()
   //createSquares(&birds, &world, b2Vec2(20.0f, 0.f));
   //createCircles(&birds2, &world, b2Vec2(startpos.x/SCALE, startpos.y/SCALE));
 
-  CircleBody a;
-  Bird2 b;
-  a.init(&world, b2Vec2(startpos.x/SCALE, startpos.y/SCALE));    
-  b.init();
-  birds2.push_back(std::make_pair(a,b));
-
->>>>>>> master
   size_t len = birds.size();
   sf::Clock kello2;
 
@@ -116,14 +91,18 @@ void game()
       b2Vec2 pos = birds[i].first.getposition();
       sf::Vector2f position = sf::Vector2f(pos.x*SCALE,pos.y*SCALE);
       birds[i].second.updatepos(position);
-<<<<<<< HEAD
-      birds[i].second.bird.setRotation(birds[i].first.body->GetAngle());
-      //birds[i].second.updateanim(d);
-=======
-      birds[i].second.bird.setRotation(birds2[i].first.body->GetAngle());
-
->>>>>>> master
+      float rotation = birds[i].first.body->GetAngle();
+      birds[i].second.bird.setRotation(rotation*180/3.14f);
       win.draw(birds[i].second.bird);
+    }
+    len = pigs.size();
+    for (int i = 0; i < len; i++){
+      b2Vec2 pos = pigs[i].first.getposition();
+      sf::Vector2f position = sf::Vector2f(pos.x*SCALE,pos.y*SCALE);
+      pigs[i].second.updatepos(position);
+      float rotation = pigs[i].first.body->GetAngle();
+      pigs[i].second.bird.setRotation(rotation*180/3.14f);
+      win.draw(pigs[i].second.bird);
     }
     len = birds2.size();
     for (int i = 0; i < len; i++){
@@ -140,12 +119,8 @@ void game()
       } else{
         position = sf::Vector2f(startpos.x, startpos.y);
       }
+      cout << position.x << "" << position.y << endl;
       birds2[i].second.updatepos(position);
-<<<<<<< HEAD
-      birds2[i].second.bird.setRotation(birds[i].first.body->GetAngle());
-      //birds2[i].second.updateanim(d);
-=======
->>>>>>> master
       win.draw(birds2[i].second.bird);
     }
     

@@ -25,10 +25,9 @@ void createObjects(std::vector<std::pair<CircleBody, Pig> >* birds, b2World* wor
 }
 
 
-void Worldbuilder(string levelNumber, b2World* world, std::vector<std::pair<RectBody, Bird> >* v_blocks, std::vector<std::pair<CircleBody, Pig> >* v_pigs)
+void Worldbuilder(string levelNumber, b2World* world, std::vector<std::pair<RectBody, Bird> >* v_blocks, std::vector<std::pair<CircleBody, Pig> >* v_pigs, std::vector<std::pair<CircleBody, Bird2> >* v_birds2)
 {
   std::vector<std::vector<std::vector<float> > > levelData = levelReader(levelNumber);
-  std::vector<std::pair<CircleBody, Bird2> > v_birds;
   
   auto it = levelData.begin();
   for (auto birds = it->begin(); birds != it->end(); birds++) {
@@ -37,7 +36,7 @@ void Worldbuilder(string levelNumber, b2World* world, std::vector<std::pair<Rect
     bird++;
     int type = *bird;
     for (int i = 0; i < quant; i++) {
-      createObjects(&v_birds, world, b2Vec2 (1.0f, 1.0f));
+      createObjects(v_birds2, world, b2Vec2(190/30.f, 370/30.f));
    }
   }
   it++;
