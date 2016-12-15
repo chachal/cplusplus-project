@@ -90,6 +90,7 @@ void game()
         case sf::Event::Resized:
           printf("Uusi leveys: %i Uusi korkeus: %i\n", evnt.size.width, evnt.size.height); 
           break;
+        case sf::Event:::
       }
     }
     world.Step(timeStep, velocityIterations, positionIterations);
