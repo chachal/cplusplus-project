@@ -69,9 +69,7 @@ void game()
 
     for (int i = 0; i < len; i++){
       b2Vec2 pos = birds[i].first.getposition();
-      float x = pos.x*SCALE;
-      float y = pos.y*SCALE;
-      sf::Vector2f position = sf::Vector2f(x,y);
+      sf::Vector2f position = sf::Vector2f(pos.x*SCALE,pos.y*SCALE);
       birds[i].second.updatepos(position);
       birds[i].second.bird.setRotation(birds2[i].first.body->GetAngle());
 
@@ -79,13 +77,23 @@ void game()
     }
     len = birds2.size();
     for (int i = 0; i < len; i++){
-      b2Vec2 pos = birds2[i].first.getposition();
-      float x = pos.x*SCALE;
-      float y = pos.y*SCALE;
-      sf::Vector2f position = sf::Vector2f(x,y);
+      sf::Vector2f position;
+      if(physics){
+        b2Vec2 pos = birds2[i].first.getposition();
+        position = sf::Vector2f(pos.x*SCALE, pos.y*SCALE);
+        birds2[i].second.bird.setRotation(birds2[i].first.body->GetAngle());
+      } else{
+        if(impact.x > 50){
+          impact.x = 50;
+        }
+        if(impact.y > 50){
+          impact.y = 50;
+        }
+        sf::Vector2i pos(startpos.x - impact.x, startpos.y - impact.y);
+        
+        position = sf::Vector2f(pos.x, pos.y);
+      }
       birds2[i].second.updatepos(position);
-      birds2[i].second.bird.setRotation(birds2[i].first.body->GetAngle());
-
       win.draw(birds2[i].second.bird);
     }
     
