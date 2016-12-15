@@ -8,7 +8,7 @@ void Bird::init(){
 	bird.setPosition(0,0);
 	birdTexture.loadFromFile("Sprites/red.png");
 	bird.setTexture(&birdTexture);
-	anim.init(&birdTexture, sf::Vector2u(5, 1), 0.1f);      
+	anim.init(&birdTexture, sf::Vector2u(5, 1), 0.1f);
 }
 
 void Bird::updatepos(sf::Vector2f pos){
