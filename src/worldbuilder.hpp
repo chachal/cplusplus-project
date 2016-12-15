@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <vector>
 #include <list>
-#include "graphics.hpp"
+#include "birds.hpp"
 #include "levelreader.hpp"
 
 class Worldbuilder

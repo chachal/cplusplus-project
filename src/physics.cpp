@@ -1,6 +1,6 @@
 #include <utility>
 #include <iostream>
-#include "graphics.hpp"
+#include "birds.hpp"
 
 void RectBody::init(b2World* world, b2Vec2 pos){
   b2BodyDef bodyDef;

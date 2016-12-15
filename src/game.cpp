@@ -4,8 +4,8 @@ using namespace std;
 
 void createObjects(std::vector<std::pair<RectBody, Bird> >* birds, b2World* world, b2Vec2 pos)
 {
-  Bird b;
-  b.init(sf::Vector2f(63.f, 63.f), sf::Vector2f(63.f, 63.f));
+  Red b;
+  b.init();
   RectBody a;
   a.init(world, pos);
   birds->push_back(std::make_pair(a,b));

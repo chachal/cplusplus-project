@@ -1,5 +1,6 @@
 #include "worldbuilder.hpp"
 
+
 Worldbuilder::Worldbuilder(string levelNumber)
 {
   std::vector<std::vector<std::vector<float> > > levelData = levelReader(levelNumber);
