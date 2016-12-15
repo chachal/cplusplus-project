@@ -1,9 +1,37 @@
 #include "worldbuilder.hpp"
 
+void createObjects(std::vector<std::pair<RectBody, Bird> >* birds, b2World* world, b2Vec2 pos)
+{
+  RectBody a;
+  Bird b;
+  a.init(world, pos);    
+  b.init();
+  birds->push_back(std::make_pair(a,b));
+}
+void createObjects(std::vector<std::pair<CircleBody, Bird2> >* birds, b2World* world, b2Vec2 pos)
+{
+  CircleBody a;
+  Bird2 b;
+  a.init(world, pos);    
+  b.init();
+  birds->push_back(std::make_pair(a,b));
+}
 
-Worldbuilder::Worldbuilder(string levelNumber)
+void createObjects(std::vector<std::pair<CircleBody, Pig> >* birds, b2World* world, b2Vec2 pos)
+{
+  CircleBody a;
+  Pig b;
+  a.init(world, pos);    
+  b.init();
+  birds->push_back(std::make_pair(a,b));
+}
+
+
+void Worldbuilder(string levelNumber, b2World* world, std::vector<std::pair<RectBody, Bird> >* v_blocks, std::vector<std::pair<CircleBody, Pig> >* v_pigs)
 {
   std::vector<std::vector<std::vector<float> > > levelData = levelReader(levelNumber);
+  std::vector<std::pair<CircleBody, Bird2> > v_birds;
+  
   auto it = levelData.begin();
   for (auto birds = it->begin(); birds != it->end(); birds++) {
     auto bird = birds->begin();
@@ -11,10 +39,8 @@ Worldbuilder::Worldbuilder(string levelNumber)
     bird++;
     int type = *bird;
     for (int i = 0; i < quant; i++) {
-      Bird b;
-      b.init(sf::Vector2f(10.0f, 10.0f), sf::Vector2f(10.0f, 10.0f), type);
-      m_birds.push_back(b);
-    }
+      createObjects(&v_birds, world, b2Vec2 (1.0f, 1.0f));
+   }
   }
   it++;
   for (auto blocks = it->begin(); blocks != it->end(); blocks++) {
@@ -26,9 +52,7 @@ Worldbuilder::Worldbuilder(string levelNumber)
     float x = *block;
     block++;
     float y = *block;
-    Block b;
-    b.init(sf::Vector2f(x, y), type, angle);
-    m_blocks.push_back(b);
+    createObjects(v_blocks, world, b2Vec2 (x,y));
   }
   it++;
   for (auto pigs = it->begin(); pigs != it->end(); pigs++) {
@@ -38,24 +62,7 @@ Worldbuilder::Worldbuilder(string levelNumber)
     float x = *pig;
     pig++;
     float y = *pig;
-    Pig b;
-    b.init(sf::Vector2f(x, y), type);
-    m_pigs.push_back(b);
+    createObjects(v_pigs, world, b2Vec2 (x,y));
   }
 }
 
-
-Worldbuilder::~Worldbuilder()
-{
-
-}
-
-void Worldbuilder::Draw(sf::RenderWindow &win)
-{
-  for (auto it = m_blocks.begin(); it != m_blocks.end(); it++) {
-    win.draw((*it).block);
-  }
-  for (auto it = m_pigs.begin(); it != m_pigs.end(); it++) {
-    win.draw((*it).pig);
-  }
-}

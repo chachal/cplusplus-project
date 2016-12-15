@@ -21,3 +21,13 @@ class Bird2{
 		void updateanim(float delta);
 		Animation anim;
 };
+
+class Pig{
+  public:		
+    sf::Texture birdTexture;		
+    sf::CircleShape bird;
+    void init();
+    void updatepos(sf::Vector2f pos);
+    void updateanim(float delta);
+    Animation anim;
+};

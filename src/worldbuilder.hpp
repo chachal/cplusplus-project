@@ -5,14 +5,7 @@
 #include "birds.hpp"
 #include "levelreader.hpp"
 
-class Worldbuilder
-{
-public:
-  Worldbuilder(string levelNumber);
-  ~Worldbuilder();
-  void Draw(sf::RenderWindow &win);
-private:
-  std::vector<Bird> m_birds;
-  std::vector<Block> m_blocks;
-  std::vector<Pig> m_pigs;
-};
+void Worldbuilder(string levelNumber, b2World* world, std::vector<std::pair<RectBody, Bird> >* v_blocks, std::vector<std::pair<CircleBody, Pig> >* v_pigs);
+void createObjects(std::vector<std::pair<RectBody, Bird> >* birds, b2World* world, b2Vec2 pos);
+void createObjects(std::vector<std::pair<CircleBody, Bird2> >* birds, b2World* world, b2Vec2 pos);
+void createObjects(std::vector<std::pair<CircleBody, Pig> >* birds, b2World* world, b2Vec2 pos);

@@ -2,26 +2,9 @@
 
 using namespace std;
 
-void createObjects(std::vector<std::pair<RectBody, Bird> >* birds, b2World* world, b2Vec2 pos)
-{
-  RectBody a;
-  Bird b;
-  a.init(world, pos);    
-  b.init();
-  birds->push_back(std::make_pair(a,b));
-}
-void createObjects(std::vector<std::pair<CircleBody, Bird2> >* birds, b2World* world, b2Vec2 pos)
-{
-  CircleBody a;
-  Bird2 b;
-  a.init(world, pos);    
-  b.init();
-  birds->push_back(std::make_pair(a,b));
-}
-
 void game()
 {
-
+  string levelnmb = "1";
   const float SCALE = 30.f;
   cout<<"STARTING"<<endl;
   sf::RenderWindow win(sf::VideoMode(960, 540), "Angry Birds");
@@ -44,17 +27,19 @@ void game()
   int32 positionIterations = 3;
   
   std::vector<std::pair<RectBody, Bird> > birds;
-  std::vector<std::pair<CircleBody, Bird2> > birds2;
+  std::vector<std::pair<CircleBody, Pig> > birds2;
   
-  
-  createObjects(&birds, &world, b2Vec2(20.0f, 0.f));
-  createObjects(&birds2, &world, b2Vec2(20.4f, -1.f));
+  Worldbuilder(levelnmb, &world, &birds, &birds2);
+  for (auto jt = birds.begin(); jt != birds.end(); jt++) {
+    win.draw(jt->second.bird);
+  }
+  for (auto kt = birds2.begin(); kt != birds2.end(); kt++) {
+    win.draw(kt->second.bird);
+  }
   size_t len = birds.size();
   sf::Clock kello2;
 
   while (win.isOpen()) {
-    
-
     win.clear();
     win.draw(background);
     size_t len = birds.size();
@@ -67,7 +52,7 @@ void game()
       sf::Vector2f position = sf::Vector2f(x,y);
       birds[i].second.updatepos(position);
       birds[i].second.bird.setRotation(birds[i].first.body->GetAngle());
-      birds[i].second.updateanim(d);
+      //birds[i].second.updateanim(d);
       win.draw(birds[i].second.bird);
     }
     len = birds2.size();
@@ -78,7 +63,7 @@ void game()
       sf::Vector2f position = sf::Vector2f(x,y);
       birds2[i].second.updatepos(position);
       birds2[i].second.bird.setRotation(birds[i].first.body->GetAngle());
-      birds2[i].second.updateanim(d);
+      //birds2[i].second.updateanim(d);
       win.draw(birds2[i].second.bird);
     }
     sf::Event evnt;

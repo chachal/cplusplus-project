@@ -9,7 +9,7 @@
 using namespace std;
 
 vector<vector<vector<float> > > levelReader(string levelNumber) {
-  string levelFile = "levels/" + levelNumber + ".csv";
+  string levelFile = levelNumber + ".csv";
   vector<vector<float> > birds, blocks, pigs;
   vector<vector<vector<float> > > levelData;
   string line, data;
@@ -33,7 +33,7 @@ vector<vector<vector<float> > > levelReader(string levelNumber) {
       }
       else if (data == "block") {
         vector<float> oneblock;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 4; i++) {
           getline(sline, data, ',');
           tmp = atof(data.c_str());
           oneblock.push_back(tmp);
@@ -43,7 +43,7 @@ vector<vector<vector<float> > > levelReader(string levelNumber) {
       }
       else if (data == "pig") {
         vector<float> onepig;
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 3; i++) {
           getline(sline, data, ',');
           tmp = atof(data.c_str());
           onepig.push_back(tmp);
