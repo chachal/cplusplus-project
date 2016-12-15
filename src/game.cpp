@@ -89,6 +89,12 @@ void game()
         if(impact.y > 50){
           impact.y = 50;
         }
+        if(impact.x < -50){
+          impact.x = -50;
+        }
+        if(impact.y < -50){
+          impact.y = -50;
+        }
         sf::Vector2i pos(startpos.x - impact.x, startpos.y - impact.y);
         
         position = sf::Vector2f(pos.x, pos.y);
@@ -106,8 +112,14 @@ void game()
       if(impact.y > 50){
         impact.y = 50;
       }
+      if(impact.x < -50){
+        impact.x = -50;
+      }
+      if(impact.y < -50){
+        impact.y = -50;
+      }
       physics = true;
-      birds2.back().first.body->ApplyLinearImpulse(b2Vec2(impact.x,impact.y/3), birds2.back().first.body->GetWorldCenter(), true);
+      birds2.back().first.body->ApplyLinearImpulse(b2Vec2(impact.x/1.2f ,impact.y/1.2f), birds2.back().first.body->GetWorldCenter(), true);
       canlaunch = false;
     }
     sf::Event evnt;
