@@ -19,6 +19,21 @@ void createCircles(std::vector<std::pair<CircleBody, Bird2> >* birds, b2World* w
   birds->push_back(std::make_pair(a,b));
 }
 
+void checkimpact(sf::Vector2i* impact){
+  if(impact->x > 50){
+    impact->x = 50;
+  }
+  if(impact->y > 50){
+    impact->y = 50;
+  }
+  if(impact->x < -50){
+    impact->x = -50;
+  }
+  if(impact->y < -50){
+    impact->y = -50;
+  }
+}
+
 void game()
 {
 
@@ -46,13 +61,14 @@ void game()
   std::vector<std::pair<RectBody, Bird> > birds;
   std::vector<std::pair<CircleBody, Bird2> > birds2;
 
-  bool canlaunch = true;
+  bool canlaunch = false;
   sf::Vector2i mousepos;
   sf::Vector2i startpos(190, 370);
   sf::Vector2i impact;
 
   bool physics = false;
-  
+  bool pressed = false;
+  bool onair = false;
   
   //createSquares(&birds, &world, b2Vec2(20.0f, 0.f));
   createCircles(&birds2, &world, b2Vec2(startpos.x/SCALE, startpos.y/SCALE));
@@ -83,18 +99,7 @@ void game()
         position = sf::Vector2f(pos.x*SCALE, pos.y*SCALE);
         birds2[i].second.bird.setRotation(birds2[i].first.body->GetAngle());
       } else{
-        if(impact.x > 50){
-          impact.x = 50;
-        }
-        if(impact.y > 50){
-          impact.y = 50;
-        }
-        if(impact.x < -50){
-          impact.x = -50;
-        }
-        if(impact.y < -50){
-          impact.y = -50;
-        }
+        checkimpact(&impact);
         sf::Vector2i pos(startpos.x - impact.x, startpos.y - impact.y);
         
         position = sf::Vector2f(pos.x, pos.y);
@@ -105,19 +110,10 @@ void game()
     
     mousepos = sf::Mouse::getPosition(win);
     impact = startpos - mousepos;
-    if (sf::Mouse::isButtonPressed(sf::Mouse::Left) &&canlaunch){
-      if(impact.x > 50){
-        impact.x = 50;
-      }
-      if(impact.y > 50){
-        impact.y = 50;
-      }
-      if(impact.x < -50){
-        impact.x = -50;
-      }
-      if(impact.y < -50){
-        impact.y = -50;
-      }
+    
+    
+    if (canlaunch){
+      checkimpact(&impact);
       physics = true;
       birds2.back().first.body->ApplyLinearImpulse(b2Vec2(impact.x/1.2f ,impact.y/1.2f), birds2.back().first.body->GetWorldCenter(), true);
       canlaunch = false;
@@ -131,7 +127,18 @@ void game()
         case sf::Event::Resized:
           printf("Uusi leveys: %i Uusi korkeus: %i\n", evnt.size.width, evnt.size.height); 
           break;
-
+        case sf::Event::MouseButtonPressed:
+          if(impact.x < 50 && impact.x > -50 && impact.y < 50 && impact.y > -50){
+            pressed = true;
+          break;
+          }
+        case sf::Event::MouseButtonReleased:
+          if(pressed){
+            canlaunch = true;
+            pressed = false;
+            onair = true;
+          break;  
+        }
       }
     }
     if(physics){
@@ -140,3 +147,6 @@ void game()
     win.display();
   }
 }
+
+
+
