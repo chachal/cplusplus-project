@@ -1,4 +1,4 @@
-# Install script for directory: /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/glew
+# Install script for directory: /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/glew
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -6,5 +6,5 @@ CXX_FLAGS = -std=c++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Box2D/.. 
+CXX_INCLUDES = -I/u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Box2D/.. 
 

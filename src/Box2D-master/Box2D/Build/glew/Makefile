@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D
+CMAKE_SOURCE_DIR = /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build
+CMAKE_BINARY_DIR = /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -124,14 +124,14 @@ install/local/fast: install/local
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build && $(CMAKE_COMMAND) -E cmake_progress_start /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build/CMakeFiles /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build/glew/CMakeFiles/progress.marks
-	cd /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build && $(MAKE) -f CMakeFiles/Makefile2 glew/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build/CMakeFiles 0
+	cd /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build && $(CMAKE_COMMAND) -E cmake_progress_start /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build/CMakeFiles /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build/glew/CMakeFiles/progress.marks
+	cd /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build && $(MAKE) -f CMakeFiles/Makefile2 glew/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build && $(MAKE) -f CMakeFiles/Makefile2 glew/clean
+	cd /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build && $(MAKE) -f CMakeFiles/Makefile2 glew/clean
 .PHONY : clean
 
 # The main clean target
@@ -141,22 +141,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build && $(MAKE) -f CMakeFiles/Makefile2 glew/preinstall
+	cd /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build && $(MAKE) -f CMakeFiles/Makefile2 glew/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build && $(MAKE) -f CMakeFiles/Makefile2 glew/preinstall
+	cd /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build && $(MAKE) -f CMakeFiles/Makefile2 glew/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 glew/CMakeFiles/glew.dir/rule:
-	cd /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build && $(MAKE) -f CMakeFiles/Makefile2 glew/CMakeFiles/glew.dir/rule
+	cd /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build && $(MAKE) -f CMakeFiles/Makefile2 glew/CMakeFiles/glew.dir/rule
 .PHONY : glew/CMakeFiles/glew.dir/rule
 
 # Convenience name for target.
@@ -166,7 +166,7 @@ glew: glew/CMakeFiles/glew.dir/rule
 
 # fast build rule for target.
 glew/fast:
-	cd /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build && $(MAKE) -f glew/CMakeFiles/glew.dir/build.make glew/CMakeFiles/glew.dir/build
+	cd /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build && $(MAKE) -f glew/CMakeFiles/glew.dir/build.make glew/CMakeFiles/glew.dir/build
 .PHONY : glew/fast
 
 glew.o: glew.c.o
@@ -175,7 +175,7 @@ glew.o: glew.c.o
 
 # target to build an object file
 glew.c.o:
-	cd /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build && $(MAKE) -f glew/CMakeFiles/glew.dir/build.make glew/CMakeFiles/glew.dir/glew.c.o
+	cd /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build && $(MAKE) -f glew/CMakeFiles/glew.dir/build.make glew/CMakeFiles/glew.dir/glew.c.o
 .PHONY : glew.c.o
 
 glew.i: glew.c.i
@@ -184,7 +184,7 @@ glew.i: glew.c.i
 
 # target to preprocess a source file
 glew.c.i:
-	cd /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build && $(MAKE) -f glew/CMakeFiles/glew.dir/build.make glew/CMakeFiles/glew.dir/glew.c.i
+	cd /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build && $(MAKE) -f glew/CMakeFiles/glew.dir/build.make glew/CMakeFiles/glew.dir/glew.c.i
 .PHONY : glew.c.i
 
 glew.s: glew.c.s
@@ -193,7 +193,7 @@ glew.s: glew.c.s
 
 # target to generate assembly for a file
 glew.c.s:
-	cd /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build && $(MAKE) -f glew/CMakeFiles/glew.dir/build.make glew/CMakeFiles/glew.dir/glew.c.s
+	cd /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build && $(MAKE) -f glew/CMakeFiles/glew.dir/build.make glew/CMakeFiles/glew.dir/glew.c.s
 .PHONY : glew.c.s
 
 # Help Target
@@ -223,6 +223,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

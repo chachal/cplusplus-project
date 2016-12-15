@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D
+CMAKE_SOURCE_DIR = /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build
+CMAKE_BINARY_DIR = /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -124,14 +124,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build && $(CMAKE_COMMAND) -E cmake_progress_start /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build/CMakeFiles /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build/Testbed/CMakeFiles/progress.marks
-	cd /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build && $(MAKE) -f CMakeFiles/Makefile2 Testbed/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build/CMakeFiles 0
+	cd /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build && $(CMAKE_COMMAND) -E cmake_progress_start /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build/CMakeFiles /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build/Testbed/CMakeFiles/progress.marks
+	cd /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build && $(MAKE) -f CMakeFiles/Makefile2 Testbed/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build && $(MAKE) -f CMakeFiles/Makefile2 Testbed/clean
+	cd /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build && $(MAKE) -f CMakeFiles/Makefile2 Testbed/clean
 .PHONY : clean
 
 # The main clean target
@@ -141,22 +141,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build && $(MAKE) -f CMakeFiles/Makefile2 Testbed/preinstall
+	cd /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build && $(MAKE) -f CMakeFiles/Makefile2 Testbed/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build && $(MAKE) -f CMakeFiles/Makefile2 Testbed/preinstall
+	cd /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build && $(MAKE) -f CMakeFiles/Makefile2 Testbed/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 Testbed/CMakeFiles/Testbed.dir/rule:
-	cd /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build && $(MAKE) -f CMakeFiles/Makefile2 Testbed/CMakeFiles/Testbed.dir/rule
+	cd /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build && $(MAKE) -f CMakeFiles/Makefile2 Testbed/CMakeFiles/Testbed.dir/rule
 .PHONY : Testbed/CMakeFiles/Testbed.dir/rule
 
 # Convenience name for target.
@@ -166,7 +166,7 @@ Testbed: Testbed/CMakeFiles/Testbed.dir/rule
 
 # fast build rule for target.
 Testbed/fast:
-	cd /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build && $(MAKE) -f Testbed/CMakeFiles/Testbed.dir/build.make Testbed/CMakeFiles/Testbed.dir/build
+	cd /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build && $(MAKE) -f Testbed/CMakeFiles/Testbed.dir/build.make Testbed/CMakeFiles/Testbed.dir/build
 .PHONY : Testbed/fast
 
 # Help Target
@@ -193,6 +193,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

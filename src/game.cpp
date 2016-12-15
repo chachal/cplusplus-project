@@ -39,7 +39,7 @@ void game()
   b2PolygonShape groundBox;
   groundBox.SetAsBox(50.0f, 1.0f);
   groundBody->CreateFixture(&groundBox, 0.0f);
-  float32 timeStep = 1.f/3000.f;
+  float32 timeStep = 1.f/6000.f;
   int32 velocityIterations = 8;	
   int32 positionIterations = 3;
   

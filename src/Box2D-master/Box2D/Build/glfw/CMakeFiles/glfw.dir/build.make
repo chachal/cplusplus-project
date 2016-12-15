@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D
+CMAKE_SOURCE_DIR = /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build
+CMAKE_BINARY_DIR = /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build
 
 # Include any dependencies generated for this target.
 include glfw/CMakeFiles/glfw.dir/depend.make
@@ -62,10 +62,10 @@ glfw/CMakeFiles/glfw.dir/requires:
 .PHONY : glfw/CMakeFiles/glfw.dir/requires
 
 glfw/CMakeFiles/glfw.dir/clean:
-	cd /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build/glfw && $(CMAKE_COMMAND) -P CMakeFiles/glfw.dir/cmake_clean.cmake
+	cd /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build/glfw && $(CMAKE_COMMAND) -P CMakeFiles/glfw.dir/cmake_clean.cmake
 .PHONY : glfw/CMakeFiles/glfw.dir/clean
 
 glfw/CMakeFiles/glfw.dir/depend:
-	cd /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/glfw /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build/glfw /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build/glfw/CMakeFiles/glfw.dir/DependInfo.cmake --color=$(COLOR)
+	cd /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/glfw /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build/glfw /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build/glfw/CMakeFiles/glfw.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : glfw/CMakeFiles/glfw.dir/depend
 

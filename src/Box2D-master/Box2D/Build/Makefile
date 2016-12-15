@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D
+CMAKE_SOURCE_DIR = /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build
+CMAKE_BINARY_DIR = /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -124,9 +124,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build/CMakeFiles /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build/CMakeFiles /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

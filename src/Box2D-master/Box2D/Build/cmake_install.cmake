@@ -1,4 +1,4 @@
-# Install script for directory: /home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D
+# Install script for directory: /u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,11 +34,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build/Box2D/cmake_install.cmake")
-  include("/home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build/HelloWorld/cmake_install.cmake")
-  include("/home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build/glew/cmake_install.cmake")
-  include("/home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build/glfw/cmake_install.cmake")
-  include("/home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build/Testbed/cmake_install.cmake")
+  include("/u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build/Box2D/cmake_install.cmake")
+  include("/u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build/HelloWorld/cmake_install.cmake")
+  include("/u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build/glew/cmake_install.cmake")
+  include("/u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build/glfw/cmake_install.cmake")
+  include("/u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build/Testbed/cmake_install.cmake")
 
 endif()
 
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

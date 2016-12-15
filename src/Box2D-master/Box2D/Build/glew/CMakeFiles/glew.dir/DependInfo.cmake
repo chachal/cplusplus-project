@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/glew/glew.c" "/home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build/glew/CMakeFiles/glew.dir/glew.c.o"
+  "/u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/glew/glew.c" "/u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build/glew/CMakeFiles/glew.dir/glew.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

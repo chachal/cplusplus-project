@@ -5,9 +5,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build/Box2D/CMakeFiles/Box2D.dir/DependInfo.cmake"
-  "/home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build/glew/CMakeFiles/glew.dir/DependInfo.cmake"
-  "/home/kuukuna/git/angrybirds2/src/Box2D-master/Box2D/Build/glfw/CMakeFiles/glfw.dir/DependInfo.cmake"
+  "/u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build/Box2D/CMakeFiles/Box2D.dir/DependInfo.cmake"
+  "/u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build/glew/CMakeFiles/glew.dir/DependInfo.cmake"
+  "/u/43/viitana3/unix/git/angrybirds2/src/Box2D-master/Box2D/Build/glfw/CMakeFiles/glfw.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.
