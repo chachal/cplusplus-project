@@ -19,4 +19,15 @@ $(BIN): $(OBJ)
 main.o: main.cpp
 	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
 
+game.o: main.cpp
+	$(CPP) -c game.cpp -o game.o $(CXXFLAGS)
+
+birds.o: main.cpp
+	$(CPP) -c birds.cpp -o birds.o $(CXXFLAGS)
+
+physics.o: main.cpp
+	$(CPP) -c physics.cpp -o physics.o $(CXXFLAGS)
+
+Animation.o: main.cpp
+	$(CPP) -c Animation.cpp -o Animation.o $(CXXFLAGS)
 
