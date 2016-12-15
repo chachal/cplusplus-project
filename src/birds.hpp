@@ -5,11 +5,10 @@
 class Bird{
 	public:		
 		sf::Texture birdTexture;		
-		sf::RectangleShape bird;
+		sf::Sprite bird;
 		void init();
 		void updatepos(sf::Vector2f pos);
-		void updateanim(float delta);
-		Animation anim;
+
 };
 
 class Bird2{
@@ -18,6 +17,5 @@ class Bird2{
 		sf::CircleShape bird;
 		void init();
 		void updatepos(sf::Vector2f pos);
-		void updateanim(float delta);
-		Animation anim;
+
 };

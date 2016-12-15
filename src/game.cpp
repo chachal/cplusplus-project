@@ -67,9 +67,8 @@ void game()
       sf::Vector2f position = sf::Vector2f(x,y);
       birds[i].second.updatepos(position);
       birds[i].second.bird.setRotation(birds2[i].first.body->GetAngle());
-      birds[i].second.updateanim(d);
+
       win.draw(birds[i].second.bird);
-      cout << birds[i].second.bird.getPosition().y << endl;
     }
     len = birds2.size();
     for (int i = 0; i < len; i++){
@@ -79,7 +78,7 @@ void game()
       sf::Vector2f position = sf::Vector2f(x,y);
       birds2[i].second.updatepos(position);
       birds2[i].second.bird.setRotation(birds2[i].first.body->GetAngle());
-      birds2[i].second.updateanim(d);
+
       win.draw(birds2[i].second.bird);
     }
     sf::Event evnt;
