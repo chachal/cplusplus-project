@@ -8,37 +8,28 @@ void Bird::init(){
 	bird.setPosition(0,0);
 	birdTexture.loadFromFile("Sprites/box.png");
 	bird.setTexture(&birdTexture);
-	//anim.init(&birdTexture, sf::Vector2u(5, 1), 0.1f);      
+    
 }
 
 void Bird::updatepos(sf::Vector2f pos){
-        bird.setPosition(pos);
+  bird.setPosition(pos);
 }
 
-void Bird::updateanim(float delta){
-	anim.Update(delta, 0);
-	bird.setTextureRect(anim.uvRect);
-}
 
 void Bird2::init(){
-	bird.setRadius(28.0f);
-        bird.setRotation(0.f);
-	bird.setFillColor(sf::Color::White);
-	bird.setOrigin(28.f, 28.f);
-	bird.setPosition(0,0);
-	birdTexture.loadFromFile("Sprites/red.png");
-	bird.setTexture(&birdTexture);
-	//anim.init(&birdTexture, sf::Vector2u(5, 1), 0.1f);      
+  bird.setRadius(25.0f);
+  bird.setRotation(0.f);
+  bird.setOrigin(25.f, 25.f);
+  bird.setPosition(0,0);
+  birdTexture.loadFromFile("Sprites/red.png");
+  bird.setTexture(&birdTexture);
+
 }
 
 void Bird2::updatepos(sf::Vector2f pos){
-        bird.setPosition(pos);
+  bird.setPosition(pos);
 }
 
-void Bird2::updateanim(float delta){
-	anim.Update(delta, 0);
-	bird.setTextureRect(anim.uvRect);
-}
 
 void Pig::init(){
   bird.setRadius(28.0f);
@@ -55,7 +46,5 @@ void Pig::updatepos(sf::Vector2f pos){
   bird.setPosition(pos);
 }
 
-void Pig::updateanim(float delta){
-  anim.Update(delta, 0);
-  bird.setTextureRect(anim.uvRect);
-}
+
+
