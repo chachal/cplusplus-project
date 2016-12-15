@@ -22,7 +22,13 @@ static void event_loop()
 
 int main()
 {
-  game();
+  sf::RenderWindow win(sf::VideoMode(960, 540), "Angry Birds");
+  sf::Sprite background;
+  sf::Texture backgroundTex;
+  backgroundTex.loadFromFile("Sprites/bg.png");
+  background.setTexture(backgroundTex);
+  background.setPosition(0,-205);
+  game(&background, &win);
   event_loop();
   return 0;
 }

@@ -6,4 +6,4 @@
 #include <list>
 
 
-void game();
+void game(sf::Sprite* background, sf::RenderWindow* win);

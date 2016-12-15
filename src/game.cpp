@@ -19,17 +19,12 @@ void checkimpact(sf::Vector2i* impact){
   }
 }
 
-void game()
+void game(sf::Sprite* background, sf::RenderWindow* win)
 {
   string levelnmb = "1";
   const float SCALE = 30.f;
   cout<<"STARTING"<<endl;
-  sf::RenderWindow win(sf::VideoMode(960, 540), "Angry Birds");
-  sf::Sprite background;
-  sf::Texture backgroundTex;
-  backgroundTex.loadFromFile("Sprites/bg.png");
-  background.setTexture(backgroundTex);
-  background.setPosition(0,-205);
+  
 
   sf::Sprite slingshot;
   sf::Texture slingshottex;
@@ -80,10 +75,10 @@ void game()
   size_t len = birds.size();
   sf::Clock kello2;
 
-  while (win.isOpen()) {
-    win.clear();
-    win.draw(background);
-    win.draw(slingshot);
+  while (win->isOpen()) {
+    win->clear();
+    win->draw(*background);
+    win->draw(slingshot);
     size_t len = birds.size();
     float d = kello2.restart().asSeconds();
 
@@ -93,7 +88,7 @@ void game()
       birds[i].second.updatepos(position);
       float rotation = birds[i].first.body->GetAngle();
       birds[i].second.bird.setRotation(rotation*180/3.14f);
-      win.draw(birds[i].second.bird);
+      win->draw(birds[i].second.bird);
     }
     len = pigs.size();
     for (int i = 0; i < len; i++){
@@ -102,7 +97,7 @@ void game()
       pigs[i].second.updatepos(position);
       float rotation = pigs[i].first.body->GetAngle();
       pigs[i].second.bird.setRotation(rotation*180/3.14f);
-      win.draw(pigs[i].second.bird);
+      win->draw(pigs[i].second.bird);
     }
     len = birds2.size();
     for (int i = 0; i < len; i++){
@@ -121,10 +116,10 @@ void game()
       }
       cout << position.x << "" << position.y << endl;
       birds2[i].second.updatepos(position);
-      win.draw(birds2[i].second.bird);
+      win->draw(birds2[i].second.bird);
     }
     
-    mousepos = sf::Mouse::getPosition(win);
+    mousepos = sf::Mouse::getPosition(*win);
     impact = startpos - mousepos;
     
     
@@ -135,10 +130,10 @@ void game()
       canlaunch = false;
     }
     sf::Event evnt;
-    while (win.pollEvent(evnt)) {
+    while (win->pollEvent(evnt)) {
       switch (evnt.type) {
         case sf::Event::Closed:
-          win.close();
+          win->close();
           break;
         case sf::Event::Resized:
           printf("Uusi leveys: %i Uusi korkeus: %i\n", evnt.size.width, evnt.size.height); 
@@ -160,7 +155,7 @@ void game()
     if(physics){
       world.Step(timeStep, velocityIterations, positionIterations);
     }
-    win.display();
+    win->display();
   }
 }
 
