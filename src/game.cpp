@@ -31,9 +31,11 @@ void game()
   
   Worldbuilder(levelnmb, &world, &birds, &birds2);
   for (auto jt = birds.begin(); jt != birds.end(); jt++) {
+    jt->second.init();
     win.draw(jt->second.bird);
   }
   for (auto kt = birds2.begin(); kt != birds2.end(); kt++) {
+    kt->second.init();
     win.draw(kt->second.bird);
   }
   size_t len = birds.size();
