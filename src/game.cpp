@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void createObjects(std::vector<std::pair<RectBody, Bird> >* birds, b2World* world, b2Vec2 pos)
+void createSquares(std::vector<std::pair<RectBody, Bird> >* birds, b2World* world, b2Vec2 pos)
 {
   RectBody a;
   Bird b;
@@ -10,7 +10,7 @@ void createObjects(std::vector<std::pair<RectBody, Bird> >* birds, b2World* worl
   b.init();
   birds->push_back(std::make_pair(a,b));
 }
-void createObjects(std::vector<std::pair<CircleBody, Bird2> >* birds, b2World* world, b2Vec2 pos)
+void createCircles(std::vector<std::pair<CircleBody, Bird2> >* birds, b2World* world, b2Vec2 pos)
 {
   CircleBody a;
   Bird2 b;
@@ -47,8 +47,8 @@ void game()
   std::vector<std::pair<CircleBody, Bird2> > birds2;
   
   
-  createObjects(&birds, &world, b2Vec2(20.0f, 0.f));
-  createObjects(&birds2, &world, b2Vec2(20.4f, -1.f));
+  createSquares(&birds, &world, b2Vec2(20.0f, 0.f));
+  createCircles(&birds2, &world, b2Vec2(20.4f, -1.f));
   size_t len = birds.size();
   sf::Clock kello2;
 
