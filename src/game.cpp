@@ -45,6 +45,12 @@ void game()
   backgroundTex.loadFromFile("Sprites/bg.png");
   background.setTexture(backgroundTex);
   background.setPosition(0,-205);
+
+  sf::Sprite slingshot;
+  sf::Texture slingshottex;
+  slingshottex.loadFromFile("Sprites/slingshot.png");
+  slingshot.setTexture(slingshottex);
+  slingshot.setPosition(155, 340);
   
   b2Vec2 gravity(0.0f, 9.8f);
   b2World world(gravity);
@@ -80,6 +86,7 @@ void game()
 
     win.clear();
     win.draw(background);
+    win.draw(slingshot);
     size_t len = birds.size();
     float d = kello2.restart().asSeconds();
 
@@ -98,11 +105,12 @@ void game()
         b2Vec2 pos = birds2[i].first.getposition();
         position = sf::Vector2f(pos.x*SCALE, pos.y*SCALE);
         birds2[i].second.bird.setRotation(birds2[i].first.body->GetAngle());
-      } else{
+      } else if (pressed){
         checkimpact(&impact);
         sf::Vector2i pos(startpos.x - impact.x, startpos.y - impact.y);
-        
         position = sf::Vector2f(pos.x, pos.y);
+      } else{
+        position = sf::Vector2f(startpos.x, startpos.y);
       }
       birds2[i].second.updatepos(position);
       win.draw(birds2[i].second.bird);
