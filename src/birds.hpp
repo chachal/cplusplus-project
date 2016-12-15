@@ -25,6 +25,4 @@ class Pig{
     sf::CircleShape bird;
     void init();
     void updatepos(sf::Vector2f pos);
-    void updateanim(float delta);
-    Animation anim;
 };

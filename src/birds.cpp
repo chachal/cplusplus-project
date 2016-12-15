@@ -3,6 +3,7 @@
 
 void Bird::init(){
   bird.setSize(sf::Vector2f(66.0f, 56.0f));
+  bird.setRotation(0.f);
   bird.setOrigin(33.f, 28.f);
   bird.setPosition(0,0);
   birdTexture.loadFromFile("Sprites/box.png");

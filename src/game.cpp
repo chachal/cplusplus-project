@@ -2,8 +2,6 @@
 
 using namespace std;
 
-
-
 void checkimpact(sf::Vector2i* impact){
   if(impact->x > 50){
     impact->x = 50;
@@ -44,12 +42,12 @@ void game(sf::Sprite* background, sf::RenderWindow* win)
   int32 velocityIterations = 8;	
   int32 positionIterations = 3;
   
-  std::vector<std::pair<RectBody, Bird> > birds;
+  std::vector<std::pair<RectBody, Bird> > blocks;
   std::vector<std::pair<CircleBody, Bird2> > birds2;
   std::vector<std::pair<CircleBody, Pig> > pigs;
   
-  Worldbuilder(levelnmb, &world, &birds, &pigs, &birds2);
-  for (auto jt = birds.begin(); jt != birds.end(); jt++) {
+  Worldbuilder(levelnmb, &world, &blocks, &pigs, &birds2);
+  for (auto jt = blocks.begin(); jt != blocks.end(); jt++) {
     jt->second.init();
   }
   for (auto kt = birds2.begin(); kt != birds2.end(); kt++) {
@@ -69,26 +67,23 @@ void game(sf::Sprite* background, sf::RenderWindow* win)
   bool pressed = false;
   bool onair = false;
   
-  //createSquares(&birds, &world, b2Vec2(20.0f, 0.f));
-  //createCircles(&birds2, &world, b2Vec2(startpos.x/SCALE, startpos.y/SCALE));
-
-  size_t len = birds.size();
+  size_t len = blocks.size();
   sf::Clock kello2;
 
   while (win->isOpen()) {
     win->clear();
     win->draw(*background);
     win->draw(slingshot);
-    size_t len = birds.size();
+    size_t len = blocks.size();
     float d = kello2.restart().asSeconds();
 
     for (int i = 0; i < len; i++){
-      b2Vec2 pos = birds[i].first.getposition();
+      b2Vec2 pos = blocks[i].first.getposition();
       sf::Vector2f position = sf::Vector2f(pos.x*SCALE,pos.y*SCALE);
-      birds[i].second.updatepos(position);
-      float rotation = birds[i].first.body->GetAngle();
-      birds[i].second.bird.setRotation(rotation*180/3.14f);
-      win->draw(birds[i].second.bird);
+      blocks[i].second.updatepos(position);
+      float rotation = blocks[i].first.body->GetAngle();
+      blocks[i].second.bird.setRotation(rotation*180/3.14f);
+      win->draw(blocks[i].second.bird);
     }
     len = pigs.size();
     for (int i = 0; i < len; i++){
@@ -114,7 +109,6 @@ void game(sf::Sprite* background, sf::RenderWindow* win)
       } else{
         position = sf::Vector2f(startpos.x, startpos.y);
       }
-      cout << position.x << "" << position.y << endl;
       birds2[i].second.updatepos(position);
       win->draw(birds2[i].second.bird);
     }
