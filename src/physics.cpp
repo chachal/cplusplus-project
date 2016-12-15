@@ -32,7 +32,7 @@ void CircleBody::init(b2World* world, b2Vec2 pos){
 
   b2CircleShape circleShape;
   circleShape.m_p.Set(0.0f, 0.0f);
-  circleShape.m_radius = 1.f;
+  circleShape.m_radius = 0.7f;
   
   b2FixtureDef fixtureDef;
   fixtureDef.shape = &circleShape;

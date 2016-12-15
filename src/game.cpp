@@ -77,7 +77,14 @@ void game()
   bool onair = false;
   
   //createSquares(&birds, &world, b2Vec2(20.0f, 0.f));
-  createCircles(&birds2, &world, b2Vec2(startpos.x/SCALE, startpos.y/SCALE));
+  //createCircles(&birds2, &world, b2Vec2(startpos.x/SCALE, startpos.y/SCALE));
+
+  CircleBody a;
+  Bird2 b;
+  a.init(&world, b2Vec2(startpos.x/SCALE, startpos.y/SCALE));    
+  b.init();
+  birds2.push_back(std::make_pair(a,b));
+
   size_t len = birds.size();
   sf::Clock kello2;
 
@@ -104,7 +111,8 @@ void game()
       if(physics){
         b2Vec2 pos = birds2[i].first.getposition();
         position = sf::Vector2f(pos.x*SCALE, pos.y*SCALE);
-        birds2[i].second.bird.setRotation(birds2[i].first.body->GetAngle());
+        float rotation = birds2[i].first.body->GetAngle();
+        birds2[i].second.bird.setRotation(rotation*180/3.14f);
       } else if (pressed){
         checkimpact(&impact);
         sf::Vector2i pos(startpos.x - impact.x, startpos.y - impact.y);
