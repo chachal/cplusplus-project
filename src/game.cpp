@@ -1,4 +1,6 @@
 #include "game.hpp"
+#include <chrono>
+#include <thread>
 
 using namespace std;
 
@@ -17,9 +19,9 @@ void checkimpact(sf::Vector2i* impact){
   }
 }
 
-void game(sf::Sprite* background, sf::RenderWindow* win)
+void game(sf::Sprite* background, sf::RenderWindow* win, std::string level)
 {
-  string levelnmb = "1";
+  string levelnmb = level;
   const float SCALE = 30.f;
   cout<<"STARTING"<<endl;
   
@@ -38,6 +40,12 @@ void game(sf::Sprite* background, sf::RenderWindow* win)
   text.setStyle(sf::Text::Bold);
   text.setColor(sf::Color::Black);
   text.setFont(font);
+
+  sf::SoundBuffer buffer;
+  buffer.loadFromFile("sound.wav");
+  sf::Sound launch;
+  sf::Sound sound;
+  sound.setBuffer(buffer);
 
   b2Vec2 gravity(0.0f, 9.8f);
   b2World world(gravity);
@@ -93,7 +101,15 @@ void game(sf::Sprite* background, sf::RenderWindow* win)
 
     size_t len = blocks.size();
     float d = kello2.restart().asSeconds();
+    
 
+    if(birds2.empty()){
+      text.setString("Points: " + std::to_string(points) + " Game Over");
+      text.setPosition(win->mapPixelToCoords(sf::Vector2i(350,270)));
+      return;
+
+    } 
+    
     for (int i = 0; i < len; i++){
       b2Vec2 pos = blocks[i].first.getposition();
       sf::Vector2f position = sf::Vector2f(pos.x*SCALE,pos.y*SCALE);
@@ -134,6 +150,15 @@ void game(sf::Sprite* background, sf::RenderWindow* win)
         view.setCenter(birds2[i].first.getposition().x*SCALE,270);
       }
       win->draw(birds2[i].second.bird);
+
+      //bool speedlimit = (onair == true && birds2[i].first.body->GetLinearVelocity().x < 1 && birds2[i].first.body->GetLinearVelocity().y < 1 );
+      if (birds2[i].first.getposition().x*SCALE >= 1300 || birds2[i].first.getposition().x*SCALE < 100){ //|| speedlimit){
+        birds2.pop_back();
+        physics = false;
+        pressed = false;
+        onair = false;
+        special = false;
+      }
     }
     
     
@@ -148,7 +173,10 @@ void game(sf::Sprite* background, sf::RenderWindow* win)
       physics = true;
       birds2.back().first.body->ApplyLinearImpulse(b2Vec2(impact.x/1.2f ,impact.y/1.2f), birds2.back().first.body->GetWorldCenter(), true);
       canlaunch = false;
+      sound.play();
     }
+
+    
     sf::Event evnt;
     while (win->pollEvent(evnt)) {
       switch (evnt.type) {
