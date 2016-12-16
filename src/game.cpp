@@ -30,7 +30,15 @@ void game(sf::Sprite* background, sf::RenderWindow* win)
   slingshottex.loadFromFile("Sprites/slingshot.png");
   slingshot.setTexture(slingshottex);
   slingshot.setPosition(155, 340);
-  
+
+  sf::Font font;
+  font.loadFromFile("font.ttf");
+  sf::Text text;
+  text.setCharacterSize(30);
+  text.setStyle(sf::Text::Bold);
+  text.setColor(sf::Color::Black);
+  text.setFont(font);
+
   b2Vec2 gravity(0.0f, 9.8f);
   b2World world(gravity);
   b2BodyDef groundBodyDef;
@@ -72,12 +80,17 @@ void game(sf::Sprite* background, sf::RenderWindow* win)
   size_t len = blocks.size();
   sf::Clock kello2;
 
-  
+  int points = 1;  
 
   while (win->isOpen()) {
     win->clear();
     win->draw(*background);
     win->draw(slingshot);
+    win->draw(text);
+    text.setString("Points: " + std::to_string(points));
+    text.setPosition(win->mapPixelToCoords(sf::Vector2i(0,0)));
+    points++;
+
     size_t len = blocks.size();
     float d = kello2.restart().asSeconds();
 
