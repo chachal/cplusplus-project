@@ -23,7 +23,7 @@ void game(sf::Sprite* background, sf::RenderWindow* win)
   const float SCALE = 30.f;
   cout<<"STARTING"<<endl;
   
-  //sf::View view(sf::FloatRect(0,0,960,540));
+  sf::View view(sf::FloatRect(0,0,960,540));
 
   sf::Sprite slingshot;
   sf::Texture slingshottex;
@@ -37,7 +37,7 @@ void game(sf::Sprite* background, sf::RenderWindow* win)
   groundBodyDef.position.Set(0.0f, 16.6f);
   b2Body* groundBody = world.CreateBody(&groundBodyDef);
   b2PolygonShape groundBox;
-  groundBox.SetAsBox(50.0f, 1.0f);
+  groundBox.SetAsBox(100.0f, 1.0f);
   groundBody->CreateFixture(&groundBox, 0.0f);
   float32 timeStep = 1.f/6000.f;
   int32 velocityIterations = 8;	
@@ -67,6 +67,7 @@ void game(sf::Sprite* background, sf::RenderWindow* win)
   bool physics = false;
   bool pressed = false;
   bool onair = false;
+  bool special = false;
   
   size_t len = blocks.size();
   sf::Clock kello2;
@@ -113,11 +114,17 @@ void game(sf::Sprite* background, sf::RenderWindow* win)
         position = sf::Vector2f(startpos.x, startpos.y);
       }
       birds2[i].second.updatepos(position);
+      
+      if(birds2[i].first.getposition().x*SCALE <= 480){
+        view.setCenter(480,270);
+      }else{
+        view.setCenter(birds2[i].first.getposition().x*SCALE,270);
+      }
       win->draw(birds2[i].second.bird);
     }
     
-    //view.setCenter(,0);
-    //win->setView(view);
+    
+    win->setView(view);
     
     mousepos = sf::Mouse::getPosition(*win);
     impact = startpos - mousepos;
@@ -139,14 +146,20 @@ void game(sf::Sprite* background, sf::RenderWindow* win)
           printf("Uusi leveys: %i Uusi korkeus: %i\n", evnt.size.width, evnt.size.height); 
           break;
         case sf::Event::MouseButtonPressed:
-          if(impact.x < 50 && impact.x > -50 && impact.y < 50 && impact.y > -50){
+          if(impact.x < 50 && impact.x > -50 && impact.y < 50 && impact.y > -50 && onair == false){
             pressed = true;
-          break;
           }
+          if(onair == true && special == true){
+            birds2.back().first.body->ApplyLinearImpulse(b2Vec2 (100 ,100), birds2.back().first.body->GetWorldCenter(), true);
+            special = false;
+            cout << "special" << endl;
+          }
+          break;
         case sf::Event::MouseButtonReleased:
           if(pressed){
             canlaunch = true;
             pressed = false;
+            special = true;
             onair = true;
           break;  
         }
