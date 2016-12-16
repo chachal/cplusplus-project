@@ -23,6 +23,7 @@ void game(sf::Sprite* background, sf::RenderWindow* win)
   const float SCALE = 30.f;
   cout<<"STARTING"<<endl;
   
+  //sf::View view(sf::FloatRect(0,0,960,540));
 
   sf::Sprite slingshot;
   sf::Texture slingshottex;
@@ -114,6 +115,9 @@ void game(sf::Sprite* background, sf::RenderWindow* win)
       birds2[i].second.updatepos(position);
       win->draw(birds2[i].second.bird);
     }
+    
+    //view.setCenter(,0);
+    //win->setView(view);
     
     mousepos = sf::Mouse::getPosition(*win);
     impact = startpos - mousepos;

@@ -9,7 +9,7 @@
 using namespace std;
 
 vector<vector<vector<float> > > levelReader(string levelNumber) {
-  string levelFile = levelNumber + ".csv";
+  string levelFile = "Levels/" + levelNumber + ".csv";
   vector<vector<float> > birds, blocks, pigs;
   vector<vector<vector<float> > > levelData;
   string line, data;

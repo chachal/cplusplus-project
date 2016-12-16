@@ -35,9 +35,8 @@ void Worldbuilder(string levelNumber, b2World* world, std::vector<std::pair<Rect
     int quant = *bird;
     bird++;
     int type = *bird;
-    for (int i = 0; i < quant; i++) {
-      createObjects(v_birds2, world, b2Vec2(190/30.f, 370/30.f));
-   }
+    createObjects(v_birds2, world, b2Vec2(190/30.f, 370/30.f));
+
   }
   it++;
   for (auto blocks = it->begin(); blocks != it->end(); blocks++) {
