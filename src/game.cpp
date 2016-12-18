@@ -117,7 +117,7 @@ void game(sf::Sprite* background, sf::RenderWindow* win, std::string level)
     //Update and draw all objects based on their physics simulations
     //Blocks
     size_t len = blocks.size();
-    for (int i = 0; i < len; i++){
+    for (unsigned int i = 0; i < len; i++){
       b2Vec2 pos = blocks[i].first.getposition();
       sf::Vector2f position = sf::Vector2f(pos.x*SCALE,pos.y*SCALE);
       blocks[i].second.updatepos(position);
@@ -127,7 +127,7 @@ void game(sf::Sprite* background, sf::RenderWindow* win, std::string level)
     }
     //Pigs
     len = pigs.size();
-    for (int i = 0; i < len; i++){
+    for (unsigned int i = 0; i < len; i++){
       b2Vec2 pos = pigs[i].first.getposition();
       sf::Vector2f position = sf::Vector2f(pos.x*SCALE,pos.y*SCALE);
       pigs[i].second.updatepos(position);
@@ -137,7 +137,7 @@ void game(sf::Sprite* background, sf::RenderWindow* win, std::string level)
     }
     //Birds
     len = birds.size();
-    for (int i = 0; i < len; i++){
+    for (unsigned int i = 0; i < len; i++){
       sf::Vector2f position;
       if(physics){
         b2Vec2 pos = birds[i].first.getposition();
