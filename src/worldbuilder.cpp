@@ -35,18 +35,14 @@ void Worldbuilder(string levelNumber, b2World* world, std::vector<std::pair<Rect
   //Iterate over the found data and call creation functions for objects
   for (auto birds = it->begin(); birds != it->end(); birds++) {
     auto bird = birds->begin();
-    int quant = *bird;
     bird++;
-    int type = *bird;
     createObjects(v_birds2, world, b2Vec2(190/30.f, 370/30.f));
 
   }
   it++;
   for (auto blocks = it->begin(); blocks != it->end(); blocks++) {
     auto block = blocks->begin();
-    int type = *block;
     block++;
-    float angle = *block;
     block++;
     float x = *block;
     block++;
@@ -56,7 +52,6 @@ void Worldbuilder(string levelNumber, b2World* world, std::vector<std::pair<Rect
   it++;
   for (auto pigs = it->begin(); pigs != it->end(); pigs++) {
     auto pig = pigs->begin();
-    int type = *pig;
     pig++;
     float x = *pig;
     pig++;
