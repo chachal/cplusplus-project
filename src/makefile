@@ -1,8 +1,8 @@
 
 CPP      = g++
 CC       = gcc
-OBJ      = main.o game.o birds.o physics.o  Animation.o worldbuilder.o levelreader.o
-LINKOBJ  = main.o game.o birds.o physics.o  Animation.o worldbuilder.o levelreader.o
+OBJ      = main.o game.o birds.o physics.o worldbuilder.o levelreader.o
+LINKOBJ  = main.o game.o birds.o physics.o worldbuilder.o levelreader.o
 LIBS     = -L./Box2D-master/Box2D/lib -L/usr/include -L/usr/share/doc -L/usr/lib/x86_68-linux-gnu -static-libgcc /usr/lib/x86_64-linux-gnu/libsfml-audio.so /usr/lib/x86_64-linux-gnu/libsfml-graphics.so /usr/lib/x86_64-linux-gnu/libsfml-network.so /usr/lib/x86_64-linux-gnu/libsfml-system.so /usr/lib/x86_64-linux-gnu/libsfml-window.so ./Box2D-master/Box2D/Build/Box2D/libBox2D.a
 CXXINCS	 = -I./Box2D-master/Box2D -I/usr/include
 CXXFLAGS = $(CXXINCS) -std=c++11
@@ -27,9 +27,6 @@ birds.o: birds.cpp
 
 physics.o: physics.cpp
 	$(CPP) -c physics.cpp -o physics.o $(CXXFLAGS)
-
-Animation.o: Animation.cpp
-	$(CPP) -c Animation.cpp -o Animation.o $(CXXFLAGS)
 
 worldbuilder.o: worldbuilder.cpp
 	$(CPP) -c worldbuilder.cpp -o worldbuilder.o $(CXXFLAGS)

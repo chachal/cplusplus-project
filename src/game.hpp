@@ -1,6 +1,4 @@
 #include <iostream>
-#include "StateMachine.hpp"
-#include "GStateMachine.hpp"
 #include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>
 #include "worldbuilder.hpp"

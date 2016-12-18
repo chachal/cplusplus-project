@@ -4,6 +4,7 @@
 
 using namespace std;
 
+//Limit the about be launch bird near the launch pad
 void checkimpact(sf::Vector2i* impact){
   if(impact->x > 50){
     impact->x = 50;
@@ -19,12 +20,15 @@ void checkimpact(sf::Vector2i* impact){
   }
 }
 
+
+//The main game loop
 void game(sf::Sprite* background, sf::RenderWindow* win, std::string level)
 {
   string levelnmb = level;
   const float SCALE = 30.f;
   cout<<"STARTING"<<endl;
   
+  //Set up camera, static objects
   sf::View view(sf::FloatRect(0,0,960,540));
 
   sf::Sprite slingshot;
@@ -34,7 +38,7 @@ void game(sf::Sprite* background, sf::RenderWindow* win, std::string level)
   slingshot.setPosition(155, 340);
 
   sf::Font font;
-  font.loadFromFile("font.ttf");
+  font.loadFromFile("Fonts/font.ttf");
   sf::Text text;
   text.setCharacterSize(30);
   text.setStyle(sf::Text::Bold);
@@ -42,11 +46,12 @@ void game(sf::Sprite* background, sf::RenderWindow* win, std::string level)
   text.setFont(font);
 
   sf::SoundBuffer buffer;
-  buffer.loadFromFile("sound.wav");
+  buffer.loadFromFile("Audio/sound.wav");
   sf::Sound launch;
   sf::Sound sound;
   sound.setBuffer(buffer);
 
+  //Set up physics simulation with Box2D
   b2Vec2 gravity(0.0f, 9.8f);
   b2World world(gravity);
   b2BodyDef groundBodyDef;
@@ -58,37 +63,40 @@ void game(sf::Sprite* background, sf::RenderWindow* win, std::string level)
   float32 timeStep = 1.f/6000.f;
   int32 velocityIterations = 8;	
   int32 positionIterations = 3;
-  
-  std::vector<std::pair<RectBody, Bird> > blocks;
-  std::vector<std::pair<CircleBody, Bird2> > birds2;
+
+
+  //Vectors to store gameobjects and their physics references  
+  std::vector<std::pair<RectBody, Box> > blocks;
+  std::vector<std::pair<CircleBody, Bird> > birds;
   std::vector<std::pair<CircleBody, Pig> > pigs;
   
-  Worldbuilder(levelnmb, &world, &blocks, &pigs, &birds2);
+  //Call worldbuilder to generate level based on csv files
+  Worldbuilder(levelnmb, &world, &blocks, &pigs, &birds);
   for (auto jt = blocks.begin(); jt != blocks.end(); jt++) {
     jt->second.init();
   }
-  for (auto kt = birds2.begin(); kt != birds2.end(); kt++) {
+  for (auto kt = birds.begin(); kt != birds.end(); kt++) {
     kt->second.init();
   }
   for (auto kt = pigs.begin(); kt != pigs.end(); kt++) {
     kt->second.init();
   }
 
-
+  //Setting up booleans to track different states of game
   bool canlaunch = false;
-  sf::Vector2i mousepos;
-  sf::Vector2i startpos(190, 370);
-  sf::Vector2i impact;
-
   bool physics = false;
   bool pressed = false;
   bool onair = false;
   bool special = false;
   
-  size_t len = blocks.size();
-  sf::Clock kello2;
-
+  //PLACEHOLDER for point count
   int points = 1;  
+
+  //Mousetracking for launch
+  sf::Vector2i mousepos;
+  sf::Vector2i startpos(190, 370);
+  sf::Vector2i impact;
+
 
   while (win->isOpen()) {
     win->clear();
@@ -99,17 +107,16 @@ void game(sf::Sprite* background, sf::RenderWindow* win, std::string level)
     text.setPosition(win->mapPixelToCoords(sf::Vector2i(0,0)));
     points++;
 
-    size_t len = blocks.size();
-    float d = kello2.restart().asSeconds();
-    
-
-    if(birds2.empty()){
+    //Game ends when player is out of birds (should add pigs as well)
+    if(birds.empty()){
       text.setString("Points: " + std::to_string(points) + " Game Over");
       text.setPosition(win->mapPixelToCoords(sf::Vector2i(350,270)));
       return;
-
     } 
-    
+
+    //Update and draw all objects based on their physics simulations
+    //Blocks
+    size_t len = blocks.size();
     for (int i = 0; i < len; i++){
       b2Vec2 pos = blocks[i].first.getposition();
       sf::Vector2f position = sf::Vector2f(pos.x*SCALE,pos.y*SCALE);
@@ -118,6 +125,7 @@ void game(sf::Sprite* background, sf::RenderWindow* win, std::string level)
       blocks[i].second.bird.setRotation(rotation*180/3.14f);
       win->draw(blocks[i].second.bird);
     }
+    //Pigs
     len = pigs.size();
     for (int i = 0; i < len; i++){
       b2Vec2 pos = pigs[i].first.getposition();
@@ -127,14 +135,15 @@ void game(sf::Sprite* background, sf::RenderWindow* win, std::string level)
       pigs[i].second.bird.setRotation(rotation*180/3.14f);
       win->draw(pigs[i].second.bird);
     }
-    len = birds2.size();
+    //Birds
+    len = birds.size();
     for (int i = 0; i < len; i++){
       sf::Vector2f position;
       if(physics){
-        b2Vec2 pos = birds2[i].first.getposition();
+        b2Vec2 pos = birds[i].first.getposition();
         position = sf::Vector2f(pos.x*SCALE, pos.y*SCALE);
-        float rotation = birds2[i].first.body->GetAngle();
-        birds2[i].second.bird.setRotation(rotation*180/3.14f);
+        float rotation = birds[i].first.body->GetAngle();
+        birds[i].second.bird.setRotation(rotation*180/3.14f);
       } else if (pressed){
         checkimpact(&impact);
         sf::Vector2i pos(startpos.x - impact.x, startpos.y - impact.y);
@@ -142,18 +151,19 @@ void game(sf::Sprite* background, sf::RenderWindow* win, std::string level)
       } else{
         position = sf::Vector2f(startpos.x, startpos.y);
       }
-      birds2[i].second.updatepos(position);
+      birds[i].second.updatepos(position);
       
-      if(birds2[i].first.getposition().x*SCALE <= 480){
+      //Camera tracks currently selected bird with set boundaries
+      if(birds[i].first.getposition().x*SCALE <= 480){
         view.setCenter(480,270);
       }else{
-        view.setCenter(birds2[i].first.getposition().x*SCALE,270);
+        view.setCenter(birds[i].first.getposition().x*SCALE,270);
       }
-      win->draw(birds2[i].second.bird);
-
-      //bool speedlimit = (onair == true && birds2[i].first.body->GetLinearVelocity().x < 1 && birds2[i].first.body->GetLinearVelocity().y < 1 );
-      if (birds2[i].first.getposition().x*SCALE >= 1300 || birds2[i].first.getposition().x*SCALE < 100){ //|| speedlimit){
-        birds2.pop_back();
+      win->draw(birds[i].second.bird);
+      
+      //Destroy active bird if it goes out of game area and reset game state booleans
+      if (birds[i].first.getposition().x*SCALE >= 1300 || birds[i].first.getposition().x*SCALE < 100){
+        birds.pop_back();
         physics = false;
         pressed = false;
         onair = false;
@@ -161,22 +171,21 @@ void game(sf::Sprite* background, sf::RenderWindow* win, std::string level)
       }
     }
     
-    
     win->setView(view);
     
     mousepos = sf::Mouse::getPosition(*win);
     impact = startpos - mousepos;
     
-    
+    //Apply force to bird
     if (canlaunch){
       checkimpact(&impact);
       physics = true;
-      birds2.back().first.body->ApplyLinearImpulse(b2Vec2(impact.x/1.2f ,impact.y/1.2f), birds2.back().first.body->GetWorldCenter(), true);
+      birds.back().first.body->ApplyLinearImpulse(b2Vec2(impact.x/1.2f ,impact.y/1.2f), birds.back().first.body->GetWorldCenter(), true);
       canlaunch = false;
       sound.play();
     }
 
-    
+    //SFML event listener
     sf::Event evnt;
     while (win->pollEvent(evnt)) {
       switch (evnt.type) {
@@ -190,10 +199,10 @@ void game(sf::Sprite* background, sf::RenderWindow* win, std::string level)
           if(impact.x < 50 && impact.x > -50 && impact.y < 50 && impact.y > -50 && onair == false){
             pressed = true;
           }
+          //Special ability for bird
           if(onair == true && special == true){
-            birds2.back().first.body->ApplyLinearImpulse(b2Vec2 (100 ,100), birds2.back().first.body->GetWorldCenter(), true);
+            birds.back().first.body->ApplyLinearImpulse(b2Vec2 (100 ,100), birds.back().first.body->GetWorldCenter(), true);
             special = false;
-            cout << "special" << endl;
           }
           break;
         case sf::Event::MouseButtonReleased:

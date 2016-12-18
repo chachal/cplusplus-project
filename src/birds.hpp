@@ -1,8 +1,7 @@
 #include "physics.hpp"
-#include "Animation.hpp"
 #include <SFML/Graphics.hpp>
 
-class Bird{
+class Box{
   public:		
     sf::Texture birdTexture;		
     sf::RectangleShape bird;
@@ -11,7 +10,7 @@ class Bird{
 
 };
 
-class Bird2{
+class Bird{
   public:		
     sf::Texture birdTexture;		
     sf::CircleShape bird;

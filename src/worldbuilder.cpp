@@ -1,16 +1,17 @@
 #include "worldbuilder.hpp"
 
-void createObjects(std::vector<std::pair<RectBody, Bird> >* birds, b2World* world, b2Vec2 pos)
+//Creation methods for objects
+void createObjects(std::vector<std::pair<RectBody, Box> >* birds, b2World* world, b2Vec2 pos)
 {
   RectBody a;
-  Bird b;
+  Box b;
   a.init(world, pos);    
   birds->push_back(std::make_pair(a,b));
 }
-void createObjects(std::vector<std::pair<CircleBody, Bird2> >* birds, b2World* world, b2Vec2 pos)
+void createObjects(std::vector<std::pair<CircleBody, Bird> >* birds, b2World* world, b2Vec2 pos)
 {
   CircleBody a;
-  Bird2 b;
+  Bird b;
   a.init(world, pos);    
   birds->push_back(std::make_pair(a,b));
 }
@@ -20,16 +21,18 @@ void createObjects(std::vector<std::pair<CircleBody, Pig> >* birds, b2World* wor
   CircleBody a;
   Pig b;
   a.init(world, pos);    
-  //b.init();
   birds->push_back(std::make_pair(a,b));
 }
 
 
-void Worldbuilder(string levelNumber, b2World* world, std::vector<std::pair<RectBody, Bird> >* v_blocks, std::vector<std::pair<CircleBody, Pig> >* v_pigs, std::vector<std::pair<CircleBody, Bird2> >* v_birds2)
+//Build the gameworld with creation methods
+void Worldbuilder(string levelNumber, b2World* world, std::vector<std::pair<RectBody, Box> >* v_blocks, std::vector<std::pair<CircleBody, Pig> >* v_pigs, std::vector<std::pair<CircleBody, Bird> >* v_birds2)
 {
+  //Pass levelnumber to levelreader method
   std::vector<std::vector<std::vector<float> > > levelData = levelReader(levelNumber);
-  
   auto it = levelData.begin();
+
+  //Iterate over the found data and call creation functions for objects
   for (auto birds = it->begin(); birds != it->end(); birds++) {
     auto bird = birds->begin();
     int quant = *bird;

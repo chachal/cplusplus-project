@@ -1,7 +1,7 @@
 #include <iostream>
 #include "birds.hpp"
 
-void Bird::init(){
+void Box::init(){
 
   bird.setSize(sf::Vector2f(70.0f, 70.0f));
   bird.setRotation(0.f);
@@ -13,12 +13,12 @@ void Bird::init(){
     
 }
 
-void Bird::updatepos(sf::Vector2f pos){
+void Box::updatepos(sf::Vector2f pos){
   bird.setPosition(pos);
 }
 
 
-void Bird2::init(){
+void Bird::init(){
   bird.setRadius(35.0f);
   bird.setRotation(0.f);
   bird.setOrigin(35.f, 35.f);
@@ -29,7 +29,7 @@ void Bird2::init(){
 
 }
 
-void Bird2::updatepos(sf::Vector2f pos){
+void Bird::updatepos(sf::Vector2f pos){
   bird.setPosition(pos);
 }
 

@@ -8,6 +8,7 @@
 
 using namespace std;
 
+//Read a given .csv file in Levels folder and parse the information to vector
 vector<vector<vector<float> > > levelReader(string levelNumber) {
   string levelFile = "Levels/" + levelNumber + ".csv";
   vector<vector<float> > birds, blocks, pigs;
