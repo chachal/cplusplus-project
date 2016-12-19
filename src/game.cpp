@@ -107,8 +107,8 @@ void game(sf::Sprite* background, sf::RenderWindow* win, std::string level)
     text.setString("Points: " + std::to_string(points));
     text.setPosition(win->mapPixelToCoords(sf::Vector2i(0,0)));
 
-    //Game ends when player is out of birds (should add pigs as well)
-    if(birds.empty()){
+    //Game ends when player is out of birds or pigs
+    if(birds.empty() || pigs.empty()){
       text.setString("Points: " + std::to_string(points) + " Game Over");
       text.setPosition(win->mapPixelToCoords(sf::Vector2i(350,270)));
       return;
