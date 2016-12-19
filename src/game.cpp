@@ -1,6 +1,7 @@
 #include "game.hpp"
 #include <chrono>
 #include <thread>
+#include <vector>
 
 using namespace std;
 
@@ -134,6 +135,17 @@ void game(sf::Sprite* background, sf::RenderWindow* win, std::string level)
       float rotation = pigs[i].first.body->GetAngle();
       pigs[i].second.bird.setRotation(rotation*180/3.14f);
       win->draw(pigs[i].second.bird);
+
+      for(b2ContactEdge* edge = pigs[i].first.body->GetContactList(); edge; edge = edge->next){
+        b2Body* a = edge->other;
+        if (a->IsBullet()){
+          pigs[i].second.hp--;
+        }
+      }
+      if (pigs[i].second.hp <= 0){
+        auto it = pigs.begin() + int(i);
+        pigs.erase(it);
+      }
     }
     //Birds
     len = birds.size();

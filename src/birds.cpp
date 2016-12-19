@@ -42,6 +42,7 @@ void Pig::init(){
   birdTexture.loadFromFile("Sprites/pig.png");
   birdTexture.setSmooth(true);
   bird.setTexture(&birdTexture);
+  hp = 1;
 }
 
 void Pig::updatepos(sf::Vector2f pos){

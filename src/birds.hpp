@@ -24,4 +24,5 @@ class Pig{
     sf::CircleShape bird;
     void init();
     void updatepos(sf::Vector2f pos);
+    int hp;
 };

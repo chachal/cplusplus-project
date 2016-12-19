@@ -13,6 +13,7 @@ void createObjects(std::vector<std::pair<CircleBody, Bird> >* birds, b2World* wo
   CircleBody a;
   Bird b;
   a.init(world, pos);    
+  a.body->SetBullet(true);
   birds->push_back(std::make_pair(a,b));
 }
 
@@ -20,7 +21,7 @@ void createObjects(std::vector<std::pair<CircleBody, Pig> >* birds, b2World* wor
 {
   CircleBody a;
   Pig b;
-  a.init(world, pos);    
+  a.init(world, pos);   
   birds->push_back(std::make_pair(a,b));
 }
 
