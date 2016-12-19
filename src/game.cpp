@@ -73,6 +73,8 @@ void game(sf::Sprite* background, sf::RenderWindow* win, std::string level)
   
   //Call worldbuilder to generate level based on csv files
   Worldbuilder(levelnmb, &world, &blocks, &pigs, &birds);
+
+  //Initialize gameobjects
   for (auto jt = blocks.begin(); jt != blocks.end(); jt++) {
     jt->second.init();
   }
@@ -90,7 +92,6 @@ void game(sf::Sprite* background, sf::RenderWindow* win, std::string level)
   bool onair = false;
   bool special = false;
   
-  //PLACEHOLDER for point count
   int points = 0;  
 
   //Mousetracking for launch
