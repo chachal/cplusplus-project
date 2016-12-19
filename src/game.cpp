@@ -91,7 +91,7 @@ void game(sf::Sprite* background, sf::RenderWindow* win, std::string level)
   bool special = false;
   
   //PLACEHOLDER for point count
-  int points = 1;  
+  int points = 0;  
 
   //Mousetracking for launch
   sf::Vector2i mousepos;
@@ -106,7 +106,6 @@ void game(sf::Sprite* background, sf::RenderWindow* win, std::string level)
     win->draw(text);
     text.setString("Points: " + std::to_string(points));
     text.setPosition(win->mapPixelToCoords(sf::Vector2i(0,0)));
-    points++;
 
     //Game ends when player is out of birds (should add pigs as well)
     if(birds.empty()){
@@ -136,6 +135,7 @@ void game(sf::Sprite* background, sf::RenderWindow* win, std::string level)
       pigs[i].second.bird.setRotation(rotation*180/3.14f);
       win->draw(pigs[i].second.bird);
 
+      //If a bird collides with a pig:
       for(b2ContactEdge* edge = pigs[i].first.body->GetContactList(); edge; edge = edge->next){
         b2Body* a = edge->other;
         if (a->IsBullet()){
@@ -145,6 +145,7 @@ void game(sf::Sprite* background, sf::RenderWindow* win, std::string level)
       if (pigs[i].second.hp <= 0){
         auto it = pigs.begin() + int(i);
         pigs.erase(it);
+        points = points + 500;
       }
     }
     //Birds
